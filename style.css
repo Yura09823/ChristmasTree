@@ -15,7 +15,7 @@ header{
 }
 .header__container{
     width: 85%;
-    min-height: 100px;
+    min-height: 8vh;
     border-radius: 12px;
     background-color: #fff;
     display: flex;
@@ -217,4 +217,112 @@ a{
 .header__basket_hover:hover .header__basket_text{
     transition: 0.5s;
     color: #fff;
+}
+
+
+
+
+main{
+    width: 100%;
+    height: 91.5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main__container{
+    width: 85%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+.swiper {
+    width: 1550px;
+    height: 704px;
+}
+.swiper-wrapper{
+    width: 100%;
+    height: 648px;
+}
+.swiper-slide {
+    font-size: 18px;
+
+
+/* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.swiper-slide{
+    display: flex;
+    width: 100%;
+    height: 648px;
+    border-radius: 20px;
+}
+
+.main__fill_text{
+    width: 50%;
+    height: 648px;
+    padding: 40px;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border: 7px solid #D51544;
+}
+.main__fill_title{
+    font-size: 64px;
+    font-family: 'ChristmasEve';
+    font-weight: 500;
+    margin-bottom: 45px;
+}
+.main__fill_subtitle{
+    width: 73%;
+    line-height: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 35px;
+}
+.main__fill_sub{
+    font-size: 24px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    color: #636363;
+    margin-bottom: 45px;
+}
+.main__button_submit{
+    width: 220px;
+    height: 55px;
+    border: none;
+    background-color: #D51544;
+    border-radius: 20px;
+    font-size: 24px;
+    color: #fff;
+}
+.main__button_submit:hover{
+    cursor: pointer;
+}
+.main__background_photo{
+    width: 50%;
+    height: 648px;
+    background-image: url('./img/phohto_background.png');
+    background-size: cover;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
