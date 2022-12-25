@@ -1,0 +1,220 @@
+@import url('./font/christmaseve.ttf');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #F5F5F7;
+}
+header{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.header__container{
+    width: 85%;
+    min-height: 100px;
+    border-radius: 12px;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header__logo{
+    display: flex;
+    user-select: none;
+}
+.header_santa{
+    width: 80px;
+    height: 74px;
+    background-image: url('./img/santa.png');
+    background-size: cover;
+}
+.header__logo_text{
+    line-height: 40px;
+    font-size: 36px;
+    font-family: 'ChristmasEve';
+}
+.header__select{
+    width: 90px;
+    height: 30px;
+    border: none;
+    background-color: transparent;
+    -webkit-appearance: none;
+    outline: none;
+    font-size: 24px;
+    font-family: 'Montserrat', serif;
+    color: #D51544;
+    font-weight: 500;
+}
+a{
+    text-decoration: none;
+    color: #000;
+}
+.header__phone{
+    display: flex;
+}
+.header_call{
+    width: 30px;
+    height: 30px;
+    background-image: url('./img/call.png');
+    background-size: cover;
+    margin-right: 5px;
+}
+.header__a{
+    font-size: 24px;
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+    transition: 0.3s;
+}
+.header__a:nth-child(1){
+    margin-right: 40px;
+}
+.header__a:hover:nth-child(1){
+    color: #D51544;
+}
+.header__a:nth-child(2){
+    margin-right: 40px;
+}
+.header__a:hover:nth-child(2){
+    color: #D51544;
+}
+.header__a:hover:nth-child(3){
+    color: #D51544;
+}
+.header__nav .dot {
+    width: 8px;
+    height: 8px;
+    background: #D51544;
+    border-radius: 50%;
+    opacity: 0;
+    -webkit-transform: translateX(30px);
+    transform: translateX(30px);
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .header__nav a:nth-child(1):hover ~ .dot {
+    -webkit-transform: translateX(45px);
+    transform: translateX(45px);
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    opacity: 1;
+  }
+  
+  .header__nav a:nth-child(2):hover ~ .dot {
+    -webkit-transform: translateX(200px);
+    transform: translateX(200px);
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    opacity: 1;
+  }
+  
+  .header__nav a:nth-child(3):hover ~ .dot {
+    -webkit-transform: translateX(355px);
+    transform: translateX(355px);
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    opacity: 1;
+  }
+  
+  .header__nav a:nth-child(4):hover ~ .dot {
+    -webkit-transform: translateX(285px);
+    transform: translateX(285px);
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    opacity: 1;
+  }
+
+
+.header__more{
+    display: flex;
+}
+.header__fill{
+    width:45px;
+    height: 45px;
+    border: 1px solid #D2D2D7;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+}
+.header__fill:last-child{
+    margin: 0;
+}
+.header__fill:hover{
+    cursor: pointer;
+}
+.header__bell{
+    width: 20px;
+    height: 22px;
+    background-image: url('./img/bell.png');
+    background-size: cover;
+}
+.header__bell_hover:hover{
+    background-color: #D51544;
+}
+.header__bell_hover:hover .header__bell{
+    transition: 0.5s;
+    background-image: url('./img/bellWhite.png');
+}
+.header__favourite{
+    width: 22px;
+    height: 19px;
+    background-image: url('./img/heart.png');
+    background-size: cover;
+}
+
+.header__favourite_hover:hover{
+    background-color: #D51544;
+}
+.header__favourite_hover:hover .header__favourite{
+    transition: 0.5s;
+    background-image: url('./img/headerWhite.png');
+}
+
+.header__search{
+    width: 20px;
+    height: 18px;
+    background-image: url('./img/search.png');
+    background-size: cover;
+}
+
+.header__search_hover:hover{
+    background-color: #D51544;
+}
+.header__search_hover:hover .header__search{
+    transition: 0.5s;
+    background-image: url('./img/searchWhite.png');
+}
+
+.header__basket_text{
+    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+    color: #686870;
+    margin-right: 10px;
+}
+.header__basket_hover{
+    width: 140px;
+}
+.header__basket{
+    width: 20px;
+    height: 22px;
+    background-image: url('./img/basket.png');
+    background-size: cover;
+}
+
+.header__basket_hover:hover{
+    background-color: #D51544;
+}
+.header__basket_hover:hover .header__basket{
+    transition: 0.5s;
+    background-image: url('./img/basketWhite.png');
+}
+.header__basket_hover:hover .header__basket_text{
+    transition: 0.5s;
+    color: #fff;
+}
