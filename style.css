@@ -208,6 +208,64 @@ a{
 
 
 
+
+.menu-btn {
+    position: relative;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    transition: all .5s ease-in-out;
+    background-color: #F5F5F7;
+    border-radius: 12px;
+}
+.menu-btn__burger {
+    width: 40px;
+    height: 6px;
+    background-color: #686870;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(255, 101, 47, .2);
+    transition: all .5s ease-in-out;
+}
+.menu-btn__burger::before, .menu-btn__burger::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 6px;
+    background: #686870;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(255, 101, 47, .2);
+    transition: all .5s ease-in-out;
+}
+.menu-btn__burger::before {
+    transform: translateY(-16px);
+}
+.menu-btn__burger::after {
+    transform: translateY(16px);
+}
+
+
+.menu-btn.open .menu-btn__burger {
+    transform: translateX(-50px);
+    
+    background: transparent;
+    box-shadow: none;
+}
+.menu-btn.open .menu-btn__burger::before {
+    transform: rotate(45deg) translate(35px, -35px);
+}
+.menu-btn.open .menu-btn__burger::after {
+    transform: rotate(-45deg) translate(35px, 35px);
+}
+
+
+
+
+
+
+
 main{
     width: 100%;
     display: flex;
@@ -310,6 +368,12 @@ main{
     align-items: flex-end;
     flex-direction: column;
     padding: 60px 40px 40px 40px;
+    justify-content: space-between;
+}
+.main__banner_text{
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
 }
 .main__banner_title{
     font-size: 48px;
@@ -319,6 +383,43 @@ main{
     font-size: 36px;
     font-family: 'Montserrat', sans-serif;
     margin-bottom: 45px;
+}
+
+.main__banner_bottom{
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.main__banner_fill{
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+.main__banner_code{
+    width: 135px;
+    height: 146px;
+    background-image: url('./img/gr-code.png');
+    background-size: cover;
+}
+.main__banner_donate{
+    width: 180px;
+    height: 80px;
+    border: 1px solid black;
+    background-color:transparent;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    user-select: none;
+}
+.main__banner_donate:hover{
+    cursor: pointer;
+}
+.main__banner_subtitle:nth-child(2){
+    margin: 0;
 }
 .swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet, .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet:root {
     margin: 0 var(--swiper-pagination-bullet-horizontal-gap,4px);
@@ -466,12 +567,16 @@ main{
     justify-content: center;
 }
 .main__item_favourite{
-    width: 46px;
-    height: 41px;
-    background-image: url('./img/heartRed.png');
-    background-size: cover;
-    background-position: center;
-    margin-left: 15px;
+    width: 135px;
+    height: 45px;
+    border: 1px solid #D51544;
+    margin-right: 15px;
+    border-radius: 10px;
+    color: #D51544;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
 }
 .main__item_favourite:hover{
     cursor: pointer;
@@ -597,4 +702,69 @@ footer{
     height: 57px;
     background-image: url('./img/privat.png');
     background-size: cover;
+}
+
+
+@media screen and (max-width:320px){
+    .header__nav{
+        display: none;
+    }
+    .header__a:nth-child(4){
+        display: none;
+    }
+    .header__fill:nth-child(4){
+        display: none;
+    }
+    .header_santa{
+        width: 31px;
+        height: 28px;
+    }
+    .header__logo_text{
+        font-size: 12px;
+        line-height: 16px;
+    }
+    .header__select{
+        width: 30px;
+        font-size: 12px;
+    }
+    .header__fill{
+        width: 40px;
+        height: 40px;
+        margin-right: 5px;
+    }
+    .header__bell{
+        width: 20px;
+        height: 22px;
+    }
+    .header__favourite, .header__search{
+        width: 20px;
+        height: 17px;
+    }
+    .main__fill_text{
+        display: none;
+    }
+    .main__fill_photo{
+        width: 320px;
+        height: 320px;
+        border-radius: 20px;
+    }
+    .main__banner{
+        width: 320px;
+        height: 320px;
+        background-size: cover;
+    }
+    .swiper{
+        height: 380px;
+        max-width: 98%;
+    }
+    .swiper-slide{
+        height: 320px;
+    }
+    .main__banner_text{
+        display: none;
+    }
+    .main__banner_bottom{
+        display: none;
+    }
+    .main__banner_subtitle
 }
