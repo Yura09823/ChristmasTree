@@ -12,10 +12,11 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 1.5vh;
 }
 .header__container{
     width: 85%;
-    min-height: 8vh;
+    min-height: 10vh;
     border-radius: 12px;
     background-color: #fff;
     display: flex;
@@ -53,38 +54,29 @@ a{
     text-decoration: none;
     color: #000;
 }
-.header__phone{
-    display: flex;
-}
-.header_call{
-    width: 30px;
-    height: 30px;
-    background-image: url('./img/call.png');
-    background-size: cover;
-    margin-right: 5px;
-}
+
 .header__a{
     font-size: 24px;
     font-family: 'Montserrat', sans-serif;
     position: relative;
     transition: 0.3s;
 }
+.header__a:hover{
+    color: #D51544;
+}
 .header__a:nth-child(1){
     margin-right: 40px;
-}
-.header__a:hover:nth-child(1){
-    color: #D51544;
 }
 .header__a:nth-child(2){
     margin-right: 40px;
 }
-.header__a:hover:nth-child(2){
-    color: #D51544;
-}
-.header__a:hover:nth-child(3){
-    color: #D51544;
+.header__nav{
+    display: flex;
+    position: relative;
 }
 .header__nav .dot {
+    position: absolute;
+    top: 30px;
     width: 8px;
     height: 8px;
     background: #D51544;
@@ -105,28 +97,22 @@ a{
   }
   
   .header__nav a:nth-child(2):hover ~ .dot {
-    -webkit-transform: translateX(200px);
-    transform: translateX(200px);
+    -webkit-transform: translateX(185px);
+    transform: translateX(185px);
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
     opacity: 1;
   }
   
   .header__nav a:nth-child(3):hover ~ .dot {
-    -webkit-transform: translateX(355px);
-    transform: translateX(355px);
+    -webkit-transform: translateX(330px);
+    transform: translateX(330px);
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
     opacity: 1;
   }
   
-  .header__nav a:nth-child(4):hover ~ .dot {
-    -webkit-transform: translateX(285px);
-    transform: translateX(285px);
-    -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-    opacity: 1;
-  }
+
 
 
 .header__more{
@@ -143,7 +129,7 @@ a{
     margin-right: 15px;
 }
 .header__fill:last-child{
-    margin: 0;
+    margin-right: 5px;
 }
 .header__fill:hover{
     cursor: pointer;
@@ -224,16 +210,15 @@ a{
 
 main{
     width: 100%;
-    height: 91.5vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .main__container{
     width: 85%;
-    height: 100%;
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
 }
 
@@ -241,8 +226,9 @@ main{
 
 
 .swiper {
-    width: 1550px;
+    max-width: 85%;
     height: 704px;
+    margin-bottom: 50px;
 }
 .swiper-wrapper{
     width: 100%;
@@ -250,20 +236,8 @@ main{
 }
 .swiper-slide {
     font-size: 18px;
-
-
-/* Center slide text vertically */
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
     display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
     justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
     align-items: center;
 }
 
@@ -318,11 +292,309 @@ main{
 .main__button_submit:hover{
     cursor: pointer;
 }
-.main__background_photo{
+.main__fill_photo{
     width: 50%;
     height: 648px;
-    background-image: url('./img/phohto_background.png');
+    background-image: url('./img/background__photo.png');
     background-size: cover;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
+}
+.main__banner{
+    width: 100%;
+    height: 648px;
+    background-image: url('./img/banner2.png');
+    background-size: cover;
+    border-radius: 20px;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    padding: 60px 40px 40px 40px;
+}
+.main__banner_title{
+    font-size: 48px;
+    font-family: 'Montserrat', sans-serif;
+}
+.main__banner_subtitle{
+    font-size: 36px;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 45px;
+}
+.swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet, .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet:root {
+    margin: 0 var(--swiper-pagination-bullet-horizontal-gap,4px);
+    --swiper-theme-color: #D51544;
+} 
+
+.main__catalog{
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-bottom: 25px;
+}
+.main__catalog_wrap{
+    display:flex;
+    width: 100%;
+    height: 100%;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+.main__h1{
+    font-size: 64px;
+    font-family: 'ChristmasEve';
+    font-weight: 500;
+}
+.main__filtr{
+    display: flex;
+    margin-top: 35px;
+    margin-bottom: 25px;
+}
+.main__filtr_item{
+    width: 85px;
+    height: 35px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    background-color: #fff;
+    margin-right: 15px;
+}
+.main__filtr_item:hover{
+    cursor: pointer;
+}
+.main__filtr_item:nth-child(4){
+    width: 150px;
+}
+.main__filtr_item:nth-child(5){
+    width: 150px;
+}
+.main__actived{
+    background-color: #D51544;
+    color: #fff;
+}
+.main__catalog_item{
+    width: 350px;
+    height: 620px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    font-family: 'Montserrat', sans-serif;
+}
+.main__catalog_item:nth-child(1){
+    margin-bottom: 30px;
+}
+.main__catalog_item:nth-child(2) .main__photo .main__photo_fill{
+    background-image: url('./img/2.png');
+}
+.main__catalog_item:nth-child(3) .main__photo .main__photo_fill{
+    background-image: url('./img/3.png');
+}
+.main__catalog_item:nth-child(4) .main__photo .main__photo_fill{
+    background-image: url('./img/4.png');
+}
+.main__catalog_item:nth-child(5) .main__photo .main__photo_fill{
+    background-image: url('./img/5.png');
+}
+.main__catalog_item:nth-child(6) .main__photo .main__photo_fill{
+    background-image: url('./img/6.png');
+}
+.main__catalog_item:nth-child(2){
+    margin-bottom: 30px;
+}
+.main__catalog_item:nth-child(3){
+    margin-bottom: 30px;
+}
+.main__photo{
+    width: 100%;
+    height: 311px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main__photo_fill{
+    width: 200px;
+    height: 311px;
+    background-image: url('./img/1.png');
+    background-size: cover;
+}
+.main__item_title{
+    font-size: 18px;
+    margin-top: 15px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.main__item_subtitle{
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    display: flex;
+}
+.main__item_subtitle:nth-child(5){
+    margin: 0;
+}
+.main__item_color{
+    color: #D51544;
+}
+.main__item_subtitle:nth-child(6){
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 18px;
+    text-decoration: line-through;
+    margin-bottom: 5px;
+}
+.main__item_subtitle:nth-child(7){
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 28px;
+    color: #D51544;
+    margin-bottom: 20px;
+}
+.main__buttons{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.main__item_favourite{
+    width: 46px;
+    height: 41px;
+    background-image: url('./img/heartRed.png');
+    background-size: cover;
+    background-position: center;
+    margin-left: 15px;
+}
+.main__item_favourite:hover{
+    cursor: pointer;
+}
+.main__item_submit{
+    width: 130px;
+    height: 45px;
+    background-color: #D51544;
+    border-radius: 10px;
+    user-select: none;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+.main__item_submit:hover{
+    cursor:pointer;
+}
+.main__about{
+    width: 100%;
+    margin-bottom: 35px;
+}
+.main__h1:nth-child(1){
+    margin-top: 25px;
+}
+.main__about_history{
+    width: 80%;
+    margin-top: 25px;
+}
+.main__about_title{
+    font-size: 26px;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+.main__about_subtitle{
+    font-size: 22px;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 35px;
+}
+
+footer{
+    width: 100%;
+    background-color: #fff;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footer__container{
+    width: 85%;
+    min-height: 25vh;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    display: flex;
+    justify-content: space-around;
+}
+.footer__logo_fill{
+    display: flex;
+    align-items: center;
+}
+.footer__logo{
+    width: 100px;
+    height: 94.5px;
+    background-image: url('./img/santa.png');
+    background-size: cover;
+}
+.footer__logo_text{
+    font-family: 'ChristmasEve';
+    font-size: 46px;
+    margin-left: 5px;
+}
+.footer__text_rights{
+    font-size: 13px;
+    font-family: 'Montserrat', sans-serif;
+    color: #636363;
+    margin-top: 65px;
+}
+.footer_block:nth-child(2){
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+.footer__text_title{
+    font-size: 16px;
+    color: #636363;
+    margin-bottom: 5px;
+    font-family: 'Montserrat', sans-serif;
+}
+.footer__a{
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+.footer__a:last-child{
+    margin: 0;
+}
+.footer__text_subtitle{
+    color: #000;
+    font-family:'Montserrat', sans-serif;
+    margin-bottom: 10px;
+}
+.footer__text_subtitle:last-child{
+    margin: 0;
+}
+.footer__item_master{
+    width: 57px;
+    height: 33px;
+    background-image: url('./img/mastercard.png');
+    background-size: cover;
+    margin-bottom: 15px;
+}
+.footer__item_visa{
+    width: 57px;
+    height: 45px;
+    background-image: url('./img/visa.png');
+    background-size: cover;
+    margin-bottom:15px;
+}
+.footer__item_privat{
+    width: 57px;
+    height: 57px;
+    background-image: url('./img/privat.png');
+    background-size: cover;
 }
