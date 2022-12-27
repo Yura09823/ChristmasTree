@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
@@ -35,7 +36,6 @@
                 <a href="#" class="header__about header__a">Про нас</a>
                 <div class="dot"></div>
             </nav>
-                <a href="#" class="header__a">+38 (067) 436 61 27</a>
             <div class="header__more">
                 <div class="header__fill header__bell_hover">
                     <div class="header__bell"></div>
@@ -46,7 +46,7 @@
                 <div class="header__fill header__search_hover">
                     <div class="header__search"></div>
                 </div>
-                <div class="header__fill header__basket_hover">
+                <div class="header__fill header__basket_hover" id="basket">
                     <div class="header__basket_text">Корзина</div>
                     <div class="header__basket"></div>
                 </div>
@@ -58,6 +58,38 @@
     </header>
     <main>
         <div class="main__container">
+            <div class="popUp_background" id="blur"></div>
+            <div class="popup" id="popup">
+                <div class="popup__top">
+                    <h1 class="popup__h1">Ваше замовлення</h1>
+                    <div class="popup__close_fill" id="close">
+                        <div class="popup__close"></div>
+                    </div>
+                </div>
+                <div class="popup__wrapper">
+                    <div class="popup__card">
+                        <div class="popup__card_close_fill">
+                            <div class="popup__card_close"></div>
+                        </div>
+                        <div class="popup__card_left">
+                            <img src="./img/1.png" class="popup__card_photo">
+                            <div class="popup__card_info">
+                                <div class="popup__card_text">Ялинка штучна</div>
+                                <div class="popup__card_id">#0001</div>
+                            </div>
+                        </div>
+                        <div class="popup__card_right">
+                            <div class="popup__card_price">1800грн</div>
+                            <div class="popup__card_addAmount">
+                                <div class="popup__card_add">-</div>
+                                <div class="popup__card_amount">1</div>
+                                <div class="popup__card_add">+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
                   <div class="swiper-slide">
@@ -93,103 +125,17 @@
                 <h1 class="main__h1">Santa's Catalog!</h1>
                 <div class="main__filtr">
                     <div class="main__filtr_item main__actived" id="all">Всі</div>
-                    <div class="main__filtr_item">Зелені</div>
-                    <div class="main__filtr_item">Білі</div>
-                    <div class="main__filtr_item">З прикрасами</div>
-                    <div class="main__filtr_item">Без прикрас</div>
+                    <div class="main__filtr_item" id="green">Зелені</div>
+                    <div class="main__filtr_item" id="white">Білі</div>
+                    <div class="main__filtr_item" id="withJewerly">З прикрасами</div>
+                    <div class="main__filtr_item" id="withoutJewerly">Без прикрас</div>
+                    <div class="main__filtr_item" id="price">По ціні</div>
+                    <div class="main__filtr_fill">
+                        <div class="main__filter_item_filtr"></div>
+                    </div>
                 </div>
                 <div class="main__catalog_wrap">
-                    <div class="main__catalog_item">
-                        <div class="main__photo">
-                            <div class="main__photo_fill"></div>
-                        </div>
-                        <div class="main__item_title">Ялинка з прикрасами #0001</div>
-                        <div class="main__item_subtitle">Вага:<div class="main__item_color"> 1.8кг</div></div>
-                        <div class="main__item_subtitle">Ширина: <span class="main__item_color">60см</span></div>
-                        <div class="main__item_subtitle">Висота: <span class="main__item_color">2м</span></div>
-                        <div class="main__item_subtitle">2200грн</div>
-                        <div class="main__item_subtitle">1800грн</div>
-                        <div class="main__buttons">
-                            <div class="main__item_favourite">До обраного</div>
-                            <div class="main__item_submit">Придбати</div>
-                        </div>
-                    </div>
-                    <div class="main__catalog_item">
-                        <div class="main__photo">
-                            <div class="main__photo_fill"></div>
-                        </div>
-                        <div class="main__item_title">Ялинка з прикрасами #0001</div>
-                        <div class="main__item_subtitle">Вага:<div class="main__item_color"> 1.8кг</div></div>
-                        <div class="main__item_subtitle">Ширина: <span class="main__item_color">60см</span></div>
-                        <div class="main__item_subtitle">Висота: <span class="main__item_color">2м</span></div>
-                        <div class="main__item_subtitle">2200грн</div>
-                        <div class="main__item_subtitle">1800грн</div>
-                        <div class="main__buttons">
-                            <div class="main__item_favourite">До обраного</div>
-                            <div class="main__item_submit">Придбати</div>
-                        </div>
-                    </div>
-                    <div class="main__catalog_item">
-                        <div class="main__photo">
-                            <div class="main__photo_fill"></div>
-                        </div>
-                        <div class="main__item_title">Ялинка з прикрасами #0001</div>
-                        <div class="main__item_subtitle">Вага:<div class="main__item_color"> 1.8кг</div></div>
-                        <div class="main__item_subtitle">Ширина: <span class="main__item_color">60см</span></div>
-                        <div class="main__item_subtitle">Висота: <span class="main__item_color">2м</span></div>
-                        <div class="main__item_subtitle">2200грн</div>
-                        <div class="main__item_subtitle">1800грн</div>
-                        <div class="main__buttons">
-                            <div class="main__item_favourite">До обраного</div>
-                            <div class="main__item_submit">Придбати</div>
-                        </div>
-                    </div>
-                    <div class="main__catalog_item">
-                        <div class="main__photo">
-                            <div class="main__photo_fill"></div>
-                        </div>
-                        <div class="main__item_title">Ялинка з прикрасами #0001</div>
-                        <div class="main__item_subtitle">Вага:<div class="main__item_color"> 1.8кг</div></div>
-                        <div class="main__item_subtitle">Ширина: <span class="main__item_color">60см</span></div>
-                        <div class="main__item_subtitle">Висота: <span class="main__item_color">2м</span></div>
-                        <div class="main__item_subtitle">2200грн</div>
-                        <div class="main__item_subtitle">1800грн</div>
-                        <div class="main__buttons">
-                            <div class="main__item_favourite">До обраного</div>
-                            <div class="main__item_submit">Придбати</div>
-                        </div>
-                    </div>
-                    <div class="main__catalog_item">
-                        <div class="main__photo">
-                            <div class="main__photo_fill"></div>
-                        </div>
-                        <div class="main__item_title">Ялинка з прикрасами #0001</div>
-                        <div class="main__item_subtitle">Вага:<div class="main__item_color"> 1.8кг</div></div>
-                        <div class="main__item_subtitle">Ширина: <span class="main__item_color">60см</span></div>
-                        <div class="main__item_subtitle">Висота: <span class="main__item_color">2м</span></div>
-                        <div class="main__item_subtitle">2200грн</div>
-                        <div class="main__item_subtitle">1800грн</div>
-                        <div class="main__buttons">
-                            <div class="main__item_favourite">До обраного</div>
-                            <div class="main__item_submit">Придбати</div>
-                        </div>
-                    </div>
-                    <div class="main__catalog_item">
-                        <div class="main__photo">
-                            <div class="main__photo_fill"></div>
-                        </div>
-                        <div class="main__item_title">Ялинка з прикрасами #0001</div>
-                        <div class="main__item_subtitle">Вага:<div class="main__item_color"> 1.8кг</div></div>
-                        <div class="main__item_subtitle">Ширина: <span class="main__item_color">60см</span></div>
-                        <div class="main__item_subtitle">Висота: <span class="main__item_color">2м</span></div>
-                        <div class="main__item_subtitle">2200грн</div>
-                        <div class="main__item_subtitle">1800грн</div>
-                        <div class="main__buttons">
-                            <div class="main__item_favourite">До обраного</div>
-                            <div class="main__item_submit">Придбати</div>
-                        </div>
-                    </div>
-                </div>
+                    
               </section>
               <section class="main__about">
                 <h1 class="main__h1">About Santa's!</h1>
@@ -202,34 +148,42 @@
     </main>
     <footer>
         <div class="footer__container">
+            
+            
             <div class="footer_block">
                 <div class="footer__logo_fill">
                     <div class="footer__logo"></div>
                     <div class="footer__logo_text">Santa's<br> Trees!</div>
                 </div>
                 <div class="footer__text_rights">©Santa's Trees! All rights reserved.</div>
+            
             </div>
-            <div class="footer_block">
-                <div class="footer__text_title">Навігація:</div>
-                <a href="#" class="footer__a">Головна</a>
-                <a href="#" class="footer__a">Каталог</a>
-                <a href="#" class="footer__a">Про нас</a>
+            <div class="footer__blocks">
+                <div class="footer_block">
+                    <div class="footer__text_title">Навігація:</div>
+                    <a href="#" class="footer__a">Головна</a>
+                    <a href="#" class="footer__a">Каталог</a>
+                    <a href="#" class="footer__a">Про нас</a>
+                </div>
+                <div class="footer_block">
+                    <div class="footer__text_title">Оформити замовлення:</div>
+                    <div class="footer__text_subtitle footer__text_exception">+38 (067) 436 61 27</div>
+                    <div class="footer__text_subtitle footer__text_exception">+38 (067) 436 61 27</div>
+                    <div class="footer__text_subtitle footer__text_exception">+38 (067) 436 61 27</div>
+                </div>
             </div>
-            <div class="footer_block">
-                <div class="footer__text_title">Оформити замовлення:</div>
-                <div class="footer__text_subtitle">+38 (067) 436 61 27</div>
-                <div class="footer__text_subtitle">+38 (067) 436 61 27</div>
-                <div class="footer__text_subtitle">+38 (067) 436 61 27</div>
+
+            <div class="footer__blocks2">
+                <div class="footer_block">
+                    <div class="footer__text_title">Час роботи:</div>
+                    <div class="footer__text_subtitle">з 11:00 до 23:00</div>
+                    <div class="footer__text_subtitle">з 1:00 до 8:00</div>
+                </div>
+                <div class="footer_block footer_block_row">
+                    <div class="footer__item_master"></div>
+                    <div class="footer__item_visa"></div>
+                    <div class="footer__item_privat"></div>
             </div>
-            <div class="footer_block">
-                <div class="footer__text_title">Час роботи:</div>
-                <div class="footer__text_subtitle">з 11:00 до 23:00</div>
-                <div class="footer__text_subtitle">з 1:00 до 8:00</div>
-            </div>
-            <div class="footer_block">
-                <div class="footer__item_master"></div>
-                <div class="footer__item_visa"></div>
-                <div class="footer__item_privat"></div>
             </div>
         </div>
     </footer>
