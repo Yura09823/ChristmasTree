@@ -456,8 +456,7 @@ main{
     margin-bottom: 25px;
 }
 .main__filtr_item{
-    width: 85px;
-    height: 35px;
+    padding: 10px;
     border-radius: 10px;
     font-size: 18px;
     font-family: 'Montserrat', sans-serif;
@@ -472,19 +471,15 @@ main{
 .main__filtr_item:hover{
     cursor: pointer;
 }
-.main__filtr_item:nth-child(4){
-    width: 150px;
-}
-.main__filtr_item:nth-child(5){
-    width: 150px;
+.main__filtr_item:nth-child(7){
+    margin: 0;
 }
 .main__actived{
     background-color: #D51544;
     color: #fff;
 }
 .main__catalog_item{
-    width: 350px;
-    height: 620px;
+    
     background-color: #fff;
     border-radius: 10px;
     padding: 20px;
@@ -520,7 +515,7 @@ main{
     margin-bottom: 8px;
     display: flex;
 }
-.main__item_subtitle:nth-child(5){
+.main__item_subtitle:nth-child(6){
     margin: 0;
 }
 .main__item_color{
@@ -776,6 +771,10 @@ footer{
     align-items: center;
     position: relative;
     font-family: 'Montserrat', sans-serif;
+    margin-bottom: 20px;
+}
+.popup__card:last-child{
+    margin: 0;
 }
 .popup__card_photo{
     width: 30px;

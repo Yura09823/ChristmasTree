@@ -28,7 +28,7 @@ menuBtn.addEventListener('click', () => {
 
 let db = [{
   name:'Ялинка штучна ',
-  id:'c0001',
+  id:'#0001',
   color: 'green',
   jewerly: true,
   img: 1,
@@ -37,7 +37,7 @@ let db = [{
 },
 {
   name:'Ялинка штучна ',
-  id:'c0002',
+  id:'#0002',
   color:'green',
   jewerly: false,
   img: 2,
@@ -46,7 +46,7 @@ let db = [{
 },
 {
   name:'Ялинка штучна ',
-  id: 'c003',
+  id: '#0003',
   color:'green',
   jewerly: true,
   img: 3,
@@ -55,7 +55,7 @@ let db = [{
 },
 {
   name: 'Ялинка штучна',
-  id: 'c0004',
+  id: '#0004',
   color: 'green',
   jewerly:true,
   img: 4,
@@ -64,7 +64,7 @@ let db = [{
 },
 {
   name: 'Ялинка штучна',
-  id:'c0005',
+  id:'#0005',
   color:'green',
   jewerly:true,
   img:5,
@@ -73,7 +73,7 @@ let db = [{
 },
 {
   name: 'Ялинка штучна ',
-  id:'c0006',
+  id:'#0006',
   jewerly:false,
   color:'white',
   img:6,
@@ -104,6 +104,42 @@ class ShowTrees{
       </div>
       `)
     };
+    $(".main__item_submit").click((parametr)=>{
+        console.log(parametr.currentTarget.id)
+        let click = 0;
+        for(let el of db){
+          if(parametr.currentTarget.id == el.id){
+            if(click<2){
+              click++;
+              $("#popupwrap").append(`
+              <div class="popup__card">
+                  <div class="popup__card_close_fill">
+                      <div class="popup__card_close"></div>
+                  </div>
+                  <div class="popup__card_left">
+                      <img src="./img/${el.img}.png" class="popup__card_photo">
+                      <div class="popup__card_info">
+                          <div class="popup__card_text">${el.name}</div>
+                          <div class="popup__card_id">${el.id}</div>
+                      </div>
+                  </div>
+                  <div class="popup__card_right">
+                      <div class="popup__card_price">${el.newprice}грн</div>
+                      <div class="popup__card_addAmount">
+                          <div class="popup__card_add">-</div>
+                          <div class="popup__card_amount">${click}</div>
+                          <div class="popup__card_add">+</div>
+                      </div>
+                  </div>
+              </div>
+              `)
+            }
+            else{
+              console.log('else true')
+            }
+          }
+        }
+    })
   }
   showGreen(){
     $(".main__catalog_wrap").empty();
@@ -129,6 +165,9 @@ class ShowTrees{
         `);
       }
     }
+    $(".main__item_submit").click(()=>{
+      alert('s')
+    })
   }
   showWhite(){
     $(".main__catalog_wrap").empty();
@@ -154,6 +193,9 @@ class ShowTrees{
         `);
       }
     }
+    $(".main__item_submit").click(()=>{
+      alert('s')
+    })
   }
   showWithJewerly(){
     $(".main__catalog_wrap").empty();
@@ -179,6 +221,9 @@ class ShowTrees{
         `);
       }
     }
+    $(".main__item_submit").click(()=>{
+      alert('s')
+    })
   }
   showWithOutJewerly(){
     $(".main__catalog_wrap").empty();
@@ -203,7 +248,24 @@ class ShowTrees{
         </div>
         `);
       }
+      $(".main__item_submit").click(()=>{
+        alert('s')
+      })
     }
+  }
+  showByPricePlus(){
+    $(".main__catalog_wrap").empty();
+    db.sort((a, b)=>{
+      return a.newprice - b.newprice;
+    })
+    this.showAll()
+  }
+  showByPriceMinus(){
+    $(".main__catalog_wrap").empty();
+    db.sort((a, b)=>{
+      return b.newprice - a.newprice;
+    })
+    this.showAll()
   }
 };
 
@@ -252,6 +314,8 @@ $("#all").click(()=>{
   $("#white").removeClass('main__actived');
   $("#withJewerly").removeClass('main__actived');
   $("#withoutJewerly").removeClass('main__actived');
+  $("#pricePlus").removeClass('main__actived');
+  $("#priceMinus").removeClass('main__actived');
 });
 $("#green").click(()=>{
   showTrees.showGreen();
@@ -261,6 +325,8 @@ $("#green").click(()=>{
   $("#all").removeClass('main__actived');
   $("#withJewerly").removeClass('main__actived');
   $("#withoutJewerly").removeClass('main__actived');
+  $("#pricePlus").removeClass('main__actived');
+  $("#priceMinus").removeClass('main__actived');
 });
 
 $("#white").click(()=>{
@@ -271,6 +337,8 @@ $("#white").click(()=>{
   $("#green").removeClass('main__actived');
   $("#withJewerly").removeClass('main__actived');
   $("#withoutJewerly").removeClass('main__actived');
+  $("#pricePlus").removeClass('main__actived');
+  $("#priceMinus").removeClass('main__actived');
 });
 
 $("#withJewerly").click(()=>{
@@ -281,6 +349,8 @@ $("#withJewerly").click(()=>{
   $("#all").removeClass('main__actived');
   $("#green").removeClass('main__actived');
   $("#withoutJewerly").removeClass('main__actived');
+  $("#pricePlus").removeClass('main__actived');
+  $("#priceMinus").removeClass('main__actived');
 });
 
 $("#withoutJewerly").click(()=>{
@@ -291,4 +361,30 @@ $("#withoutJewerly").click(()=>{
   $("#all").removeClass('main__actived');
   $("#green").removeClass('main__actived');
   $("#withJewerly").removeClass('main__actived');
+  $("#pricePlus").removeClass('main__actived');
+  $("#priceMinus").removeClass('main__actived');
+});
+
+$("#pricePlus").click(()=>{
+  showTrees.showByPricePlus()
+  $("#pricePlus").addClass('main__actived');
+
+  $("#all").removeClass('main__actived');
+  $("#green").removeClass('main__actived');
+  $("#white").removeClass('main__actived');
+  $("#withJewerly").removeClass('main__actived');
+  $("#withoutJewerly").removeClass('main__actived');
+  $("#priceMinus").removeClass('main__actived');
+});
+
+$("#priceMinus").click(()=>{
+  showTrees.showByPriceMinus();
+  $("#priceMinus").addClass('main__actived');
+
+  $("#all").removeClass('main__actived');
+  $("#green").removeClass('main__actived');
+  $("#white").removeClass('main__actived');
+  $("#withJewerly").removeClass('main__actived');
+  $("#withoutJewerly").removeClass('main__actived');
+  $("#pricePlus").removeClass('main__actived');
 });
