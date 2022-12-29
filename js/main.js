@@ -80,7 +80,8 @@ let db = [{
   oldprice:6000,
   newprice:3900
 }
-]
+];
+let clickAll = 0;
 class ShowTrees{
   showAll(){
     $(".main__catalog_wrap").empty();
@@ -106,11 +107,10 @@ class ShowTrees{
     };
     $(".main__item_submit").click((parametr)=>{
         console.log(parametr.currentTarget.id)
-        let click = 0;
+        clickAll++;
         for(let el of db){
           if(parametr.currentTarget.id == el.id){
-            if(click<2){
-              click++;
+            if(clickAll <= 1){
               $("#popupwrap").append(`
               <div class="popup__card">
                   <div class="popup__card_close_fill">
@@ -127,15 +127,39 @@ class ShowTrees{
                       <div class="popup__card_price">${el.newprice}грн</div>
                       <div class="popup__card_addAmount">
                           <div class="popup__card_add">-</div>
-                          <div class="popup__card_amount">${click}</div>
-                          <div class="popup__card_add">+</div>
+                          <div class="popup__card_amount" id="amountClick">${clickAll}</div>
+                          <div class="popup__card_add" id="clickPlus">+</div>
                       </div>
                   </div>
-              </div>
+              </div> 
               `)
             }
             else{
-              console.log('else true')
+              if(parametr.currentTarget.id == el.id){
+                $(".popup__card").addClass('popup__active');
+              }
+              $("#popupwrap").append(`
+              <div class="popup__card">
+                  <div class="popup__card_close_fill">
+                      <div class="popup__card_close"></div>
+                  </div>
+                  <div class="popup__card_left">
+                      <img src="./img/${el.img}.png" class="popup__card_photo">
+                      <div class="popup__card_info">
+                          <div class="popup__card_text">${el.name}</div>
+                          <div class="popup__card_id">${el.id}</div>
+                      </div>
+                  </div>
+                  <div class="popup__card_right">
+                      <div class="popup__card_price">${el.newprice}</div>
+                      <div class="popup__card_addAmount">
+                          <div class="popup__card_add">-</div>
+                          <div class="popup__card_amount" id="amountClick">${clickAll}</div>
+                          <div class="popup__card_add" id="clickPlus">+</div>
+                      </div>
+                  </div>
+              </div> 
+              `)
             }
           }
         }
@@ -165,9 +189,11 @@ class ShowTrees{
         `);
       }
     }
-    $(".main__item_submit").click(()=>{
-      alert('s')
-    })
+    $(".main__item_submit").click((parametr)=>{
+      console.log(parametr.currentTarget.id)
+      clickGreen++;
+      
+  })
   }
   showWhite(){
     $(".main__catalog_wrap").empty();
@@ -283,7 +309,12 @@ $("#close").click(()=>{
   $('body').css("overflow", "auto")
 });
 
-
+$("#search").click(()=>{
+  $("#popup").fadeOut(500);
+  $('body').css("overflow", "hidden");
+  $("#search__popup").fadeIn(500);
+  $("#blur").fadeIn(500);
+});
 
 
 

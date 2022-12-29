@@ -19,7 +19,7 @@
     />
 </head>
 <body>
-    <header>
+    <header id="header">
         <div class="header__container">
             <div class="header__logo">
                 <div class="header_santa"></div>
@@ -31,9 +31,9 @@
                 <option value="2">Sambir</option>
             </select>
             <nav class="header__nav">
-                <a href="#" class="header__home header__a">Головна</a>
-                <a href="#" class="header__catalog header__a">Каталог</a>
-                <a href="#" class="header__about header__a">Про нас</a>
+                <a href="#header" class="header__home header__a">Головна</a>
+                <a href="#catalog" class="header__catalog header__a">Каталог</a>
+                <a href="#about" class="header__about header__a">Про нас</a>
                 <div class="dot"></div>
             </nav>
             <div class="header__more">
@@ -43,7 +43,7 @@
                 <div class="header__fill header__favourite_hover">
                     <div class="header__favourite"></div>
                 </div>
-                <div class="header__fill header__search_hover">
+                <div class="header__fill header__search_hover" id="search">
                     <div class="header__search"></div>
                 </div>
                 <div class="header__fill header__basket_hover" id="basket">
@@ -67,7 +67,34 @@
                     </div>
                 </div>
                 <div class="popup__wrapper" id="popupwrap">
-                    
+                    <!-- <div class="popup__card">
+                        <div class="popup__card_close_fill">
+                            <div class="popup__card_close"></div>
+                        </div>
+                        <div class="popup__card_left">
+                            <img src="./img/1.png" class="popup__card_photo">
+                            <div class="popup__card_info">
+                                <div class="popup__card_text">#00</div>
+                                <div class="popup__card_id">#0001</div>
+                            </div>
+                        </div>
+                        <div class="popup__card_right">
+                            <div class="popup__card_price">1800uah</div>
+                            <div class="popup__card_addAmount">
+                                <div class="popup__card_add">-</div>
+                                <div class="popup__card_amount">1</div>
+                                <div class="popup__card_add">+</div>
+                            </div>
+                        </div>
+                    </div>  -->
+                </div>
+            </div>
+            <div class="search__popup" id="search__popup">
+                <div class="search__popup_top">
+                    <input type="search" placeholder="Введіть назву товару та номер якого бажаєте знайти..." class="popup__search_input">
+                    <div class="popup__close_fill">
+                        <div class="popup__close"></div>
+                    </div>
                 </div>
             </div>
             <div class="swiper mySwiper">
@@ -101,7 +128,7 @@
                 
                 <div class="swiper-pagination"></div>
               </div>
-              <section class="main__catalog">
+              <section class="main__catalog" id="catalog">
                 <h1 class="main__h1">Santa's Catalog!</h1>
                 <div class="main__filtr">
                     <div class="main__filtr_item main__actived" id="all">Всі</div>
@@ -118,7 +145,7 @@
                 <div class="main__catalog_wrap">
                     
               </section>
-              <section class="main__about">
+              <section class="main__about" id="about">
                 <h1 class="main__h1">About Santa's!</h1>
                 <div class="main__about_history">
                     <div class="main__about_title">З чого усе починалось...</div>
