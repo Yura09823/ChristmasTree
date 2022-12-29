@@ -27,7 +27,7 @@ menuBtn.addEventListener('click', () => {
 
 
 let db = [{
-  name:'Ялинка штучна ',
+  name:'Ялинка штучна',
   id:'#0001',
   color: 'green',
   jewerly: true,
@@ -36,7 +36,7 @@ let db = [{
   newprice:2200
 },
 {
-  name:'Ялинка штучна ',
+  name:'Ялинка штучна',
   id:'#0002',
   color:'green',
   jewerly: false,
@@ -45,7 +45,7 @@ let db = [{
   newprice:3300
 },
 {
-  name:'Ялинка штучна ',
+  name:'Ялинка штучна',
   id: '#0003',
   color:'green',
   jewerly: true,
@@ -72,7 +72,7 @@ let db = [{
   newprice:3500
 },
 {
-  name: 'Ялинка штучна ',
+  name: 'Ялинка штучна',
   id:'#0006',
   jewerly:false,
   color:'white',
@@ -82,6 +82,7 @@ let db = [{
 }
 ];
 let clickAll = 0;
+let arrayBasket = [];
 class ShowTrees{
   showAll(){
     $(".main__catalog_wrap").empty();
@@ -106,63 +107,48 @@ class ShowTrees{
       `)
     };
     $(".main__item_submit").click((parametr)=>{
-        console.log(parametr.currentTarget.id)
-        clickAll++;
-        for(let el of db){
-          if(parametr.currentTarget.id == el.id){
-            if(clickAll <= 1){
-              $("#popupwrap").append(`
-              <div class="popup__card">
-                  <div class="popup__card_close_fill">
-                      <div class="popup__card_close"></div>
-                  </div>
-                  <div class="popup__card_left">
-                      <img src="./img/${el.img}.png" class="popup__card_photo">
-                      <div class="popup__card_info">
-                          <div class="popup__card_text">${el.name}</div>
-                          <div class="popup__card_id">${el.id}</div>
+        for(let i =0; i<db.length; i++){
+          if(parametr.currentTarget.id == db[i].id){
+              if(arrayBasket.length === 0){
+                arrayBasket.push(parametr.currentTarget.id)
+                $("#popupwrap").append(`
+                  <div class="popup__card">
+                      <div class="popup__card_close_fill">
+                          <div class="popup__card_close"></div>
                       </div>
-                  </div>
-                  <div class="popup__card_right">
-                      <div class="popup__card_price">${el.newprice}грн</div>
-                      <div class="popup__card_addAmount">
-                          <div class="popup__card_add">-</div>
-                          <div class="popup__card_amount" id="amountClick">${clickAll}</div>
-                          <div class="popup__card_add" id="clickPlus">+</div>
+                      <div class="popup__card_left">
+                          <img src="./img/${db[i].img}.png" class="popup__card_photo">
+                          <div class="popup__card_info">
+                              <div class="popup__card_text">${db[i].name}</div>
+                              <div class="popup__card_id">${db[i].id}</div>
+                          </div>
                       </div>
-                  </div>
-              </div> 
-              `)
-            }
-            else{
-              if(parametr.currentTarget.id == el.id){
-                $(".popup__card").addClass('popup__active');
+                      <div class="popup__card_right">
+                          <div class="popup__card_price">${db[i].newprice}грн</div>
+                          <div class="popup__card_addAmount">
+                              <div class="popup__card_add">-</div>
+                              <div class="popup__card_amount" id="amountClick">0</div>
+                              <div class="popup__card_add" id="clickPlus">+</div>
+                          </div>
+                      </div>
+                  </div> 
+                  `)
               }
-              $("#popupwrap").append(`
-              <div class="popup__card">
-                  <div class="popup__card_close_fill">
-                      <div class="popup__card_close"></div>
-                  </div>
-                  <div class="popup__card_left">
-                      <img src="./img/${el.img}.png" class="popup__card_photo">
-                      <div class="popup__card_info">
-                          <div class="popup__card_text">${el.name}</div>
-                          <div class="popup__card_id">${el.id}</div>
-                      </div>
-                  </div>
-                  <div class="popup__card_right">
-                      <div class="popup__card_price">${el.newprice}</div>
-                      <div class="popup__card_addAmount">
-                          <div class="popup__card_add">-</div>
-                          <div class="popup__card_amount" id="amountClick">${clickAll}</div>
-                          <div class="popup__card_add" id="clickPlus">+</div>
-                      </div>
-                  </div>
-              </div> 
-              `)
-            }
+              else{
+                for(let el of arrayBasket){
+                  if(parametr.currentTarget.id == el){
+                    $(".popup__card_amount").text(`${clickAll++}`)
+                  }
+                  else{
+                    arrayBasket.push(parametr.currentTarget.id)
+                  }
+                }
+              }
           }
+          
         }
+        let pureArray = [... new Set(arrayBasket)]
+        console.log(pureArray)
     })
   }
   showGreen(){
@@ -300,7 +286,9 @@ $("#basket").click(()=>{
   $("#blur").fadeIn(500);
   $("#basket").addClass("header__basket_active");
   $('body').attr("scroll", "no");
-  $('body').css("overflow", "hidden")
+  $('body').css("overflow", "hidden");
+  $("#search__popup").fadeOut(500);
+  $(".header__search_hover").removeClass('header__search_active')
 });
 $("#close").click(()=>{
   $("#popup").fadeOut(500);
@@ -314,13 +302,54 @@ $("#search").click(()=>{
   $('body').css("overflow", "hidden");
   $("#search__popup").fadeIn(500);
   $("#blur").fadeIn(500);
+  $(".header__search_hover").addClass('header__search_active')
+  $("#basket").removeClass("header__basket_active");
 });
 
 
+$("#search__close").click(()=>{
+  $("#search__popup").fadeOut(500);
+  $("#blur").fadeOut(500);
+  $('body').css("overflow", "auto");
+  $(".header__search_hover").removeClass('header__search_active')
+});
 
-
-
-
+let input = '';
+$(".popup__search_input").keydown(()=>{
+  input = $(".popup__search_input").val();
+  $(".search__popup_wrap").empty();
+  for(let el of db){
+    if(el.name == input){
+      $(".search__popup_wrap").append(`
+      <div class="search__card">
+        <div class="search__card_left">
+            <img src="./img/${el.img}.png" class="search__card_img">
+            <div class="search__card_info">
+                <div class="search__card_text">
+                    <div class="search__card_name">${el.name}</div>
+                    <div class="search__card_id">${el.id}</div>
+                </div>
+                <div class="search__card_buttons">
+                    <div class="search__card_button">До обраного</div>
+                    <div class="search__card_button">Придбати</div>
+                </div>
+            </div>
+        </div>
+        <div class="search__card_right">
+            <div class="search__card_right_top">
+                <div class="search__card_logo"></div>
+            </div>
+            <div class="search__card_right_bottom">
+                <div class="search__card_oldprice">${el.oldprice}грн</div>
+                <div class="search__card_newprice">${el.newprice}грн</div>
+            </div>
+        </div>
+    </div>
+      `);
+    console.log(true)
+    }
+  }
+});
 
 
 
