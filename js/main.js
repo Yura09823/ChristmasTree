@@ -23,8 +23,6 @@ menuBtn.addEventListener('click', () => {
     }
 });
 
-// const menuBtnBurger = document.querySelector('.menu-btn__burger');
-
 
 let db = [{
   name:'Ялинка штучна',
@@ -33,7 +31,8 @@ let db = [{
   jewerly: true,
   img: 1,
   oldprice:4200,
-  newprice:2200
+  newprice:2200,
+  amount:0
 },
 {
   name:'Ялинка штучна',
@@ -42,7 +41,8 @@ let db = [{
   jewerly: false,
   img: 2,
   oldprice:5600,
-  newprice:3300
+  newprice:3300,
+  amount:0
 },
 {
   name:'Ялинка штучна',
@@ -51,7 +51,8 @@ let db = [{
   jewerly: true,
   img: 3,
   oldprice:3200,
-  newprice:1800
+  newprice:1800,
+  amount:0
 },
 {
   name: 'Ялинка штучна',
@@ -60,7 +61,8 @@ let db = [{
   jewerly:true,
   img: 4,
   oldprice:4900,
-  newprice:2900
+  newprice:2900,
+  amount:0
 },
 {
   name: 'Ялинка штучна',
@@ -69,7 +71,8 @@ let db = [{
   jewerly:true,
   img:5,
   oldprice:5500,
-  newprice:3500
+  newprice:3500,
+  amount:0
 },
 {
   name: 'Ялинка штучна',
@@ -78,7 +81,8 @@ let db = [{
   color:'white',
   img:6,
   oldprice:6000,
-  newprice:3900
+  newprice:3900,
+  amount:0
 }
 ];
 let clickAll = 0;
@@ -107,48 +111,7 @@ class ShowTrees{
       `)
     };
     $(".main__item_submit").click((parametr)=>{
-        for(let i =0; i<db.length; i++){
-          if(parametr.currentTarget.id == db[i].id){
-              if(arrayBasket.length === 0){
-                arrayBasket.push(parametr.currentTarget.id)
-                $("#popupwrap").append(`
-                  <div class="popup__card">
-                      <div class="popup__card_close_fill">
-                          <div class="popup__card_close"></div>
-                      </div>
-                      <div class="popup__card_left">
-                          <img src="./img/${db[i].img}.png" class="popup__card_photo">
-                          <div class="popup__card_info">
-                              <div class="popup__card_text">${db[i].name}</div>
-                              <div class="popup__card_id">${db[i].id}</div>
-                          </div>
-                      </div>
-                      <div class="popup__card_right">
-                          <div class="popup__card_price">${db[i].newprice}грн</div>
-                          <div class="popup__card_addAmount">
-                              <div class="popup__card_add">-</div>
-                              <div class="popup__card_amount" id="amountClick">0</div>
-                              <div class="popup__card_add" id="clickPlus">+</div>
-                          </div>
-                      </div>
-                  </div> 
-                  `)
-              }
-              else{
-                for(let el of arrayBasket){
-                  if(parametr.currentTarget.id == el){
-                    $(".popup__card_amount").text(`${clickAll++}`)
-                  }
-                  else{
-                    arrayBasket.push(parametr.currentTarget.id)
-                  }
-                }
-              }
-          }
-          
-        }
-        let pureArray = [... new Set(arrayBasket)]
-        console.log(pureArray)
+      ShowBasketCards(parametr);
     })
   }
   showGreen(){
@@ -176,10 +139,8 @@ class ShowTrees{
       }
     }
     $(".main__item_submit").click((parametr)=>{
-      console.log(parametr.currentTarget.id)
-      clickGreen++;
-      
-  })
+      ShowBasketCards(parametr);
+    })
   }
   showWhite(){
     $(".main__catalog_wrap").empty();
@@ -205,8 +166,8 @@ class ShowTrees{
         `);
       }
     }
-    $(".main__item_submit").click(()=>{
-      alert('s')
+    $(".main__item_submit").click((parametr)=>{
+      ShowBasketCards(parametr);
     })
   }
   showWithJewerly(){
@@ -233,8 +194,8 @@ class ShowTrees{
         `);
       }
     }
-    $(".main__item_submit").click(()=>{
-      alert('s')
+    $(".main__item_submit").click((parametr)=>{
+      ShowBasketCards(parametr);
     })
   }
   showWithOutJewerly(){
@@ -270,14 +231,20 @@ class ShowTrees{
     db.sort((a, b)=>{
       return a.newprice - b.newprice;
     })
-    this.showAll()
+    this.showAll();
+    $(".main__item_submit").click((parametr)=>{
+      ShowBasketCards(parametr);
+    })
   }
   showByPriceMinus(){
     $(".main__catalog_wrap").empty();
     db.sort((a, b)=>{
       return b.newprice - a.newprice;
     })
-    this.showAll()
+    this.showAll();
+    $(".main__item_submit").click((parametr)=>{
+      ShowBasketCards(parametr);
+    })
   }
 };
 
@@ -346,7 +313,6 @@ $(".popup__search_input").keydown(()=>{
         </div>
     </div>
       `);
-    console.log(true)
     }
   }
 });
@@ -354,6 +320,64 @@ $(".popup__search_input").keydown(()=>{
 
 
 
+function ShowBasketCards(parametr){
+  $("#popupwrap").empty()
+  for(let i =0; i<db.length; i++){
+    if(parametr.currentTarget.id == db[i].id){
+        if(arrayBasket.includes(parametr.currentTarget.id)){
+          db[i].amount++;
+        }
+        else{
+          arrayBasket.push(db[i].id);
+          db[i].amount++;
+        }
+        
+    }
+    
+  }
+  for (let i = 0; i < db.length; i++) {
+    for (let j = 0; j < arrayBasket.length; j++) {
+      if (db[i].id == arrayBasket[j]) {
+        $("#popupwrap").append(`
+        <div class="popup__card" id="code${db[i].id}">
+            <div class="popup__card_close_fill">
+                <div class="popup__card_close"></div>
+            </div>
+            <div class="popup__card_left">
+                <img src="./img/${db[i].img}.png" class="popup__card_photo">
+                <div class="popup__card_info">
+                    <div class="popup__card_text">${db[i].name}</div>
+                    <div class="popup__card_id">${db[i].id}</div>
+                </div>
+            </div>
+            <div class="popup__card_right">
+                <div class="popup__card_price">${db[i].newprice}грн</div>
+                <div class="popup__card_addAmount">
+                    <div class="popup__card_add" id="clickMinus">-</div>
+                    <div class="popup__card_amount" id="amountClick">${db[i].amount}</div>
+                    <div class="popup__card_add" id="clickPlus">+</div>
+                </div>
+            </div>
+        </div> 
+        `);
+        let price = 
+        $("#clickPlus").click(()=>{
+          $("#amountClick").text(`${db[i].amount += 1}`)
+          $(".popup__card_price").text(`${price += db[i].newprice}грн`)
+          console.log(db[i].amount)
+        });
+        $("#clickMinus").click(()=>{
+          if(db[i].amount >> 1){
+            
+            $("#amountClick").text(`${db[i].amount -= 1}`)
+            $(".popup__card_price").text(`${price -= db[i].newprice}грн`)
+            console.log(db[i].amount)
+          }
+        })
+      }    
+    }
+  }
+}
 
 
 
