@@ -31,7 +31,8 @@ let db = [{
   jewerly: true,
   img: 1,
   oldprice:4200,
-  newprice:2200,
+  newprice:0,
+  price: 2200,
   amount:0
 },
 {
@@ -41,7 +42,8 @@ let db = [{
   jewerly: false,
   img: 2,
   oldprice:5600,
-  newprice:3300,
+  newprice:0,
+  price: 3300,
   amount:0
 },
 {
@@ -51,7 +53,8 @@ let db = [{
   jewerly: true,
   img: 3,
   oldprice:3200,
-  newprice:1800,
+  newprice:0,
+  price: 1800,
   amount:0
 },
 {
@@ -61,7 +64,8 @@ let db = [{
   jewerly:true,
   img: 4,
   oldprice:4900,
-  newprice:2900,
+  newprice:0,
+  price: 2900,
   amount:0
 },
 {
@@ -71,7 +75,8 @@ let db = [{
   jewerly:true,
   img:5,
   oldprice:5500,
-  newprice:3500,
+  newprice:0,
+  price: 3500,
   amount:0
 },
 {
@@ -81,7 +86,8 @@ let db = [{
   color:'white',
   img:6,
   oldprice:6000,
-  newprice:3900,
+  newprice:0,
+  price: 4900,
   amount:0
 }
 ];
@@ -101,7 +107,7 @@ class ShowTrees{
           <div class="main__item_subtitle">Ширина: <span class="main__item_color">60см</span></div>
           <div class="main__item_subtitle">Висота: <span class="main__item_color">2м</span></div>
           <div class="main__item_subtitle">${el.oldprice}грн</div>
-          <div class="main__item_subtitle">${el.newprice}грн</div>
+          <div class="main__item_subtitle">${el.price}грн</div>
           <div class="main__buttons">
               <div class="main__item_favourite">До обраного</div>
               <div class="main__item_submit" id="${el.id}">Придбати</div>
@@ -128,7 +134,7 @@ class ShowTrees{
             <div class="main__item_subtitle">Ширина: <span class="main__item_color">60см</span></div>
             <div class="main__item_subtitle">Висота: <span class="main__item_color">2м</span></div>
             <div class="main__item_subtitle">${db[i].oldprice}грн</div>
-            <div class="main__item_subtitle">${db[i].newprice}грн</div>
+            <div class="main__item_subtitle">${db[i].price}грн</div>
             <div class="main__buttons">
                 <div class="main__item_favourite">До обраного</div>
                 <div class="main__item_submit" id="${db[i].id}">Придбати</div>
@@ -156,7 +162,7 @@ class ShowTrees{
             <div class="main__item_subtitle">Ширина: <span class="main__item_color">60см</span></div>
             <div class="main__item_subtitle">Висота: <span class="main__item_color">2м</span></div>
             <div class="main__item_subtitle">${db[i].oldprice}грн</div>
-            <div class="main__item_subtitle">${db[i].newprice}грн</div>
+            <div class="main__item_subtitle">${db[i].price}грн</div>
             <div class="main__buttons">
                 <div class="main__item_favourite">До обраного</div>
                 <div class="main__item_submit" id="${db[i].id}">Придбати</div>
@@ -184,7 +190,7 @@ class ShowTrees{
             <div class="main__item_subtitle">Ширина: <span class="main__item_color">60см</span></div>
             <div class="main__item_subtitle">Висота: <span class="main__item_color">2м</span></div>
             <div class="main__item_subtitle">${db[i].oldprice}грн</div>
-            <div class="main__item_subtitle">${db[i].newprice}рн</div>
+            <div class="main__item_subtitle">${db[i].price}рн</div>
             <div class="main__buttons">
                 <div class="main__item_favourite">До обраного</div>
                 <div class="main__item_submit" id="${db[i].id}">Придбати</div>
@@ -212,7 +218,7 @@ class ShowTrees{
             <div class="main__item_subtitle">Ширина: <span class="main__item_color">60см</span></div>
             <div class="main__item_subtitle">Висота: <span class="main__item_color">2м</span></div>
             <div class="main__item_subtitle">${db[i].oldprice}грн</div>
-            <div class="main__item_subtitle">${db[i].newprice}грн</div>
+            <div class="main__item_subtitle">${db[i].price}грн</div>
             <div class="main__buttons">
                 <div class="main__item_favourite">До обраного</div>
                 <div class="main__item_submit" id="${db[i].id}">Придбати</div>
@@ -222,14 +228,14 @@ class ShowTrees{
         `);
       }
       $(".main__item_submit").click(()=>{
-        alert('s')
+        ShowBasketCards(parametr);
       })
     }
   }
   showByPricePlus(){
     $(".main__catalog_wrap").empty();
     db.sort((a, b)=>{
-      return a.newprice - b.newprice;
+      return a.price - b.price;
     })
     this.showAll();
     $(".main__item_submit").click((parametr)=>{
@@ -239,7 +245,7 @@ class ShowTrees{
   showByPriceMinus(){
     $(".main__catalog_wrap").empty();
     db.sort((a, b)=>{
-      return b.newprice - a.newprice;
+      return b.price - a.price;
     })
     this.showAll();
     $(".main__item_submit").click((parametr)=>{
@@ -308,7 +314,7 @@ $(".popup__search_input").keydown(()=>{
             </div>
             <div class="search__card_right_bottom">
                 <div class="search__card_oldprice">${el.oldprice}грн</div>
-                <div class="search__card_newprice">${el.newprice}грн</div>
+                <div class="search__card_newprice">${el.price}грн</div>
             </div>
         </div>
     </div>
@@ -351,27 +357,23 @@ function ShowBasketCards(parametr){
                 </div>
             </div>
             <div class="popup__card_right">
-                <div class="popup__card_price">${db[i].newprice}грн</div>
+                <div class="popup__card_price">${db[i].newprice += db[i].price}грн</div>
                 <div class="popup__card_addAmount">
-                    <div class="popup__card_add" id="clickMinus">-</div>
-                    <div class="popup__card_amount" id="amountClick">${db[i].amount}</div>
-                    <div class="popup__card_add" id="clickPlus">+</div>
+                    <div class="popup__card_add popup__card_minus" id="clickMinus">-</div>
+                    <div class="popup__card_amount">${db[i].amount}</div>
+                    <div class="popup__card_add popup__card_plus" id="clickPlus">+</div>
                 </div>
             </div>
         </div> 
         `);
-        let price = 
-        $("#clickPlus").click(()=>{
-          $("#amountClick").text(`${db[i].amount += 1}`)
-          $(".popup__card_price").text(`${price += db[i].newprice}грн`)
-          console.log(db[i].amount)
+        $(".popup__card_plus").click(()=>{
+          $(".popup__card_amount").text(`${db[i].amount += 1}`)
+          $(".popup__card_price").text(`${db[i].newprice += db[i].price}грн`)
         });
-        $("#clickMinus").click(()=>{
-          if(db[i].amount >> 1){
-            
-            $("#amountClick").text(`${db[i].amount -= 1}`)
-            $(".popup__card_price").text(`${price -= db[i].newprice}грн`)
-            console.log(db[i].amount)
+        $(".popup__card_minus").click(()=>{
+          if(db[i].amount > 1){
+            $(".popup__card_amount").text(`${db[i].amount -= 1}`)
+            $(".popup__card_price").text(`${db[i].newprice -= db[i].price }грн`)
           }
         })
       }    
