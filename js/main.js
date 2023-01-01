@@ -24,6 +24,8 @@ menuBtn.addEventListener('click', () => {
         $("#blur").fadeIn(500);
         $("#burger__popup").fadeIn(500);
         $('body').css("overflow", "hidden");
+        $("#search__popup").fadeOut(500);
+        $(".header__search_hover").removeClass('header__search_active')
     } else {
         menuBtn.classList.remove('open');
         menuOpen = false;
@@ -289,6 +291,9 @@ $("#search").click(()=>{
   $("#blur").fadeIn(500);
   $(".header__search_hover").addClass('header__search_active')
   $("#basket").removeClass("header__basket_active");
+  menuBtn.classList.remove('open');
+  menuOpen = false;
+  $(".burger__popup").fadeOut(500);
 });
 
 
@@ -296,7 +301,7 @@ $("#search__close").click(()=>{
   $("#search__popup").fadeOut(500);
   $("#blur").fadeOut(500);
   $('body').css("overflow", "auto");
-  $(".header__search_hover").removeClass('header__search_active')
+  $(".header__search_hover").removeClass('header__search_active');
 });
 
 
@@ -305,7 +310,7 @@ $(".burger__popup_a").click(()=>{
   $("#burger__popup").fadeOut(500);
   $('body').css("overflow", "auto");
   menuBtn.classList.remove('open');
-  menuOpen = false;
+  menuOpen = true;
 });
 
 $(".burger__popup_basket").click(()=>{
