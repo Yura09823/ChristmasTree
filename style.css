@@ -1393,6 +1393,18 @@ footer{
 
 
 @media screen and (max-width:320px){
+    .popup__card_right{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .popup__card_add{
+        width: 35px;
+        height: 35px;
+        font-size: 24px;
+    }
+    .popup__card_text{
+        font-size: 16px;
+    }
     .header__nav{
         display: none;
     }
