@@ -11,15 +11,25 @@ var swiper = new Swiper(".mySwiper", {
       prevEl: ".swiper-button-prev",
     },
   });
+$("#select").change(()=>{
+  let change = $("#select").val();
+  document.title = `Santa's Trees! | ${change}`
+});
 const menuBtn = document.querySelector('.menu-btn');
 let menuOpen = false;
 menuBtn.addEventListener('click', () => {
     if(!menuOpen) {
         menuBtn.classList.add('open');
         menuOpen = true;
+        $("#blur").fadeIn(500);
+        $("#burger__popup").fadeIn(500);
+        $('body').css("overflow", "hidden");
     } else {
         menuBtn.classList.remove('open');
         menuOpen = false;
+        $("#blur").fadeOut(500);
+        $("#burger__popup").fadeOut(500);
+        $('body').css("overflow", "auto");
     }
 });
 
@@ -267,7 +277,9 @@ $("#close").click(()=>{
   $("#popup").fadeOut(500);
   $("#blur").fadeOut(500);
   $("#basket").removeClass("header__basket_active");
-  $('body').css("overflow", "auto")
+  $('body').css("overflow", "auto");
+  menuBtn.classList.remove('open');
+  menuOpen = false;
 });
 
 $("#search").click(()=>{
@@ -286,6 +298,28 @@ $("#search__close").click(()=>{
   $('body').css("overflow", "auto");
   $(".header__search_hover").removeClass('header__search_active')
 });
+
+
+$(".burger__popup_a").click(()=>{
+  $("#blur").fadeOut(500);
+  $("#burger__popup").fadeOut(500);
+  $('body').css("overflow", "auto");
+  menuBtn.classList.remove('open');
+  menuOpen = false;
+});
+
+$(".burger__popup_basket").click(()=>{
+  $("#burger__popup").fadeOut(500);
+  $("#popup").fadeIn(500);
+});
+
+
+
+
+
+
+
+
 
 let input = '';
 $(".popup__search_input").keydown(()=>{
