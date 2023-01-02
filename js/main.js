@@ -322,6 +322,14 @@ $(".burger__popup_basket").click(()=>{
 
 
 
+$(".main__filtr_fill").click(()=>{
+  $(".filtr__popup").fadeIn(500);
+})
+
+
+
+
+
 
 
 
@@ -414,10 +422,11 @@ function ShowBasketCards(parametr){
             $(".popup__card_amount").text(`${db[i].amount -= 1}`)
             $(".popup__card_price").text(`${db[i].newprice -= db[i].price }грн`)
           }
-        })
+        });
       }    
     }
   }
+
 }
 
 
