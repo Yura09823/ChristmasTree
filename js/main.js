@@ -38,69 +38,69 @@ menuBtn.addEventListener('click', () => {
 
 let db = [{
   name:'Ялинка штучна',
-  id:'#0001',
+  id:'0001',
   color: 'green',
   jewerly: true,
   img: 1,
   oldprice:4200,
-  newprice:0,
+  newprice:2200,
   price: 2200,
-  amount:0
+  amount:1
 },
 {
   name:'Ялинка штучна',
-  id:'#0002',
+  id:'0002',
   color:'green',
   jewerly: false,
   img: 2,
   oldprice:5600,
-  newprice:0,
+  newprice:3300,
   price: 3300,
-  amount:0
+  amount:1
 },
 {
   name:'Ялинка штучна',
-  id: '#0003',
+  id: '0003',
   color:'green',
   jewerly: true,
   img: 3,
   oldprice:3200,
-  newprice:0,
+  newprice:1800,
   price: 1800,
-  amount:0
+  amount:1
 },
 {
   name: 'Ялинка штучна',
-  id: '#0004',
+  id: '0004',
   color: 'green',
   jewerly:true,
   img: 4,
   oldprice:4900,
-  newprice:0,
+  newprice:2900,
   price: 2900,
-  amount:0
+  amount:1
 },
 {
   name: 'Ялинка штучна',
-  id:'#0005',
+  id:'0005',
   color:'green',
   jewerly:true,
   img:5,
   oldprice:5500,
-  newprice:0,
+  newprice:3500,
   price: 3500,
-  amount:0
+  amount:1
 },
 {
   name: 'Ялинка штучна',
-  id:'#0006',
+  id:'0006',
   jewerly:false,
   color:'white',
   img:6,
   oldprice:6000,
-  newprice:0,
+  newprice:4900,
   price: 4900,
-  amount:0
+  amount:1
 }
 ];
 let clickAll = 0;
@@ -114,7 +114,7 @@ class ShowTrees{
           <div class="main__photo">
               <img class="main__photo_fill" src="./img/${el.img}.png">
           </div>
-          <div class="main__item_title">${el.name} ${el.id}</div>
+          <div class="main__item_title">${el.name} #${el.id}</div>
           <div class="main__item_subtitle">Вага:<div class="main__item_color"> 1.8кг</div></div>
           <div class="main__item_subtitle">Ширина: <span class="main__item_color">60см</span></div>
           <div class="main__item_subtitle">Висота: <span class="main__item_color">2м</span></div>
@@ -378,15 +378,12 @@ function ShowBasketCards(parametr){
   for(let i =0; i<db.length; i++){
     if(parametr.currentTarget.id == db[i].id){
         if(arrayBasket.includes(parametr.currentTarget.id)){
-          db[i].amount++;
+
         }
         else{
           arrayBasket.push(db[i].id);
-          db[i].amount++;
         }
-        
     }
-    
   }
   for (let i = 0; i < db.length; i++) {
     for (let j = 0; j < arrayBasket.length; j++) {
@@ -400,11 +397,11 @@ function ShowBasketCards(parametr){
                 <img src="./img/${db[i].img}.png" class="popup__card_photo">
                 <div class="popup__card_info">
                     <div class="popup__card_text">${db[i].name}</div>
-                    <div class="popup__card_id">${db[i].id}</div>
+                    <div class="popup__card_id">#${db[i].id}</div>
                 </div>
             </div>
             <div class="popup__card_right">
-                <div class="popup__card_price">${db[i].newprice += db[i].price}грн</div>
+                <div class="popup__card_price">${ db[i].newprice}грн</div>
                 <div class="popup__card_addAmount">
                     <div class="popup__card_add popup__card_minus" id="clickMinus">-</div>
                     <div class="popup__card_amount">${db[i].amount}</div>
@@ -413,17 +410,24 @@ function ShowBasketCards(parametr){
             </div>
         </div> 
         `);
-        $(".popup__card_plus").click(()=>{
-          $(".popup__card_amount").text(`${db[i].amount += 1}`)
-          $(".popup__card_price").text(`${db[i].newprice += db[i].price}грн`)
+        $("#code" + db[i].id + " .popup__card_plus").click(()=>{
+          $("#code" + db[i].id + " .popup__card_amount").text(`${db[i].amount += 1}`)
+          $("#code" + db[i].id + " .popup__card_price").text(`${db[i].newprice += db[i].price}грн`)
         });
-        $(".popup__card_minus").click(()=>{
+        $("#code" + db[i].id + " .popup__card_minus").click(()=>{
           if(db[i].amount > 1){
-            $(".popup__card_amount").text(`${db[i].amount -= 1}`)
-            $(".popup__card_price").text(`${db[i].newprice -= db[i].price }грн`)
+            $("#code" + db[i].id + " .popup__card_amount").text(`${db[i].amount -= 1}`)
+            $("#code" + db[i].id + " .popup__card_price").text(`${db[i].newprice -= db[i].price }грн`)
           }
-        });
-      }    
+        }); 
+        $("#code" + db[i].id + " .popup__card_close_fill").click(()=>{
+          $("#code" + db[i].id).remove(0);
+          for(let a =0; a < arrayBasket.length; a++){
+            arrayBasket.splice(arrayBasket.indexOf(db[i].id), 1)
+            break;
+          }
+        })
+      } 
     }
   }
 
@@ -431,7 +435,12 @@ function ShowBasketCards(parametr){
 
 
 
-
+// if(el == db[i].id){
+//   arrayBasket.splice(el- 1, 1);
+//   console.log(true);
+//   console.log(arrayBasket)
+//   console.log('el: ', el)
+// }
 
 
 
