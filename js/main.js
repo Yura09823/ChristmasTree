@@ -320,10 +320,12 @@ $(".burger__popup_basket").click(()=>{
 
 $(".main__filtr_fill").click(()=>{
   $(".filtr__popup").fadeIn(500);
+  $('body').css("overflow", "hidden");
 })
 
 $("#filtr__close").click(()=>{
   $(".filtr__popup").fadeOut(500);
+  $('body').css("overflow", "auto");
 })
 
 
