@@ -103,7 +103,7 @@ let db = [{
   amount:1
 }
 ];
-let clickAll = 0;
+
 let arrayBasket = [];
 class ShowTrees{
   showAll(){
@@ -318,14 +318,13 @@ $(".burger__popup_basket").click(()=>{
   $("#popup").fadeIn(500);
 });
 
-
-
-
-
 $(".main__filtr_fill").click(()=>{
   $(".filtr__popup").fadeIn(500);
 })
 
+$("#filtr__close").click(()=>{
+  $(".filtr__popup").fadeOut(500);
+})
 
 
 
@@ -435,20 +434,53 @@ function ShowBasketCards(parametr){
 
 
 
-// if(el == db[i].id){
-//   arrayBasket.splice(el- 1, 1);
-//   console.log(true);
-//   console.log(arrayBasket)
-//   console.log('el: ', el)
-// }
-
-
 
 
 
 //  TREES 
 let showTrees = new ShowTrees();
 showTrees.showAll();
+$("#filtrAll").click(()=>{
+  $(".filtr__popup").fadeOut(500);
+
+  showTrees.showAll();
+});
+
+$("#filtrGreen").click(()=>{
+  $(".filtr__popup").fadeOut(500);
+
+  showTrees.showGreen();
+});
+
+$("#filtrWhite").click(()=>{
+  $(".filtr__popup").fadeOut(500);
+
+  showTrees.showWhite();
+});
+
+$("#filtrWithJewerly").click(()=>{
+  $(".filtr__popup").fadeOut(500);
+
+  showTrees.showWithJewerly();
+});
+
+$("#filtrWithOutJewerly").click(()=>{
+  $(".filtr__popup").fadeOut(500);
+
+  showTrees.showWithOutJewerly();
+});
+
+$("#filtrPlus").click(()=>{
+  $(".filtr__popup").fadeOut(500);
+
+  showTrees.showByPricePlus();
+});
+
+$("#filtrMinus").click(()=>{
+  $(".filtr__popup").fadeOut(500);
+
+  showTrees.showByPriceMinus();
+});
 $("#all").click(()=>{
   showTrees.showAll();
   $("#all").addClass('main__actived');
