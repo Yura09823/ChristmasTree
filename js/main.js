@@ -121,7 +121,7 @@ class ShowTrees{
           <div class="main__item_subtitle">${el.oldprice}грн</div>
           <div class="main__item_subtitle">${el.price}грн</div>
           <div class="main__buttons">
-              <div class="main__item_favourite">До обраного</div>
+              <div class="main__item_favourite" id="${el.id}">До обраного</div>
               <div class="main__item_submit" id="${el.id}">Придбати</div>
           </div>
         </div>
@@ -130,6 +130,9 @@ class ShowTrees{
     };
     $(".main__item_submit").click((parametr)=>{
       ShowBasketCards(parametr);
+    })
+    $(".main__item_favourite").click((parametr)=>{
+      showFavouritesCards(parametr);
     })
   }
   showGreen(){
@@ -242,6 +245,7 @@ class ShowTrees{
       $(".main__item_submit").click(()=>{
         ShowBasketCards(parametr);
       })
+      
     }
   }
   showByPricePlus(){
@@ -328,7 +332,14 @@ $("#filtr__close").click(()=>{
   $('body').css("overflow", "auto");
 })
 
+$(".header__favourite_hover").click(()=>{
+  $(".favourite__popup").fadeIn(500);
+  $(".header__favourite_hover").addClass('')
+})
 
+$("#favourite__close").click(()=>{
+  $(".favourite__popup").fadeOut(500);
+})
 
 
 
@@ -348,7 +359,7 @@ $(".popup__search_input").keydown(()=>{
             <div class="search__card_info">
                 <div class="search__card_text">
                     <div class="search__card_name">${el.name}</div>
-                    <div class="search__card_id">${el.id}</div>
+                    <div class="search__card_id">#${el.id}</div>
                 </div>
                 <div class="search__card_buttons">
                     <div class="search__card_button">До обраного</div>
@@ -375,7 +386,8 @@ $(".popup__search_input").keydown(()=>{
 
 
 function ShowBasketCards(parametr){
-  $("#popupwrap").empty()
+  $("#popupwrap").empty();
+  let allSummary = 0;
   for(let i =0; i<db.length; i++){
     if(parametr.currentTarget.id == db[i].id){
         if(arrayBasket.includes(parametr.currentTarget.id)){
@@ -389,6 +401,7 @@ function ShowBasketCards(parametr){
   for (let i = 0; i < db.length; i++) {
     for (let j = 0; j < arrayBasket.length; j++) {
       if (db[i].id == arrayBasket[j]) {
+        allSummary += db[i].newprice
         $("#popupwrap").append(`
         <div class="popup__card" id="code${db[i].id}">
             <div class="popup__card_close_fill">
@@ -414,11 +427,15 @@ function ShowBasketCards(parametr){
         $("#code" + db[i].id + " .popup__card_plus").click(()=>{
           $("#code" + db[i].id + " .popup__card_amount").text(`${db[i].amount += 1}`)
           $("#code" + db[i].id + " .popup__card_price").text(`${db[i].newprice += db[i].price}грн`)
+          allSummary+= db[i].price;
+          $(".popup__footer_price").text(`${allSummary}грн`);
         });
         $("#code" + db[i].id + " .popup__card_minus").click(()=>{
           if(db[i].amount > 1){
             $("#code" + db[i].id + " .popup__card_amount").text(`${db[i].amount -= 1}`)
-            $("#code" + db[i].id + " .popup__card_price").text(`${db[i].newprice -= db[i].price }грн`)
+            $("#code" + db[i].id + " .popup__card_price").text(`${db[i].newprice -= db[i].price }грн`);
+            allSummary-= db[i].price;
+            $(".popup__footer_price").text(`${allSummary}грн`);
           }
         }); 
         $("#code" + db[i].id + " .popup__card_close_fill").click(()=>{
@@ -427,13 +444,64 @@ function ShowBasketCards(parametr){
             arrayBasket.splice(arrayBasket.indexOf(db[i].id), 1)
             break;
           }
-        })
-      } 
+          allSummary -= db[i].newprice;
+          $(".popup__footer_price").text(`${allSummary}грн`)
+        });
+       }
+        $(".popup__footer_price").css('display', 'flex');
+        $(".popup__footer_submit").css('display', 'flex');
+        $(".popup__footer_price").text(`${allSummary}грн`)
     }
   }
-
+  
 }
 
+let arrayFavorite = [];
+function showFavouritesCards(parametr){
+  $(".favourite__popup_wrap").empty();
+  for(let i =0; i<db.length; i++){
+    if(parametr.currentTarget.id == db[i].id){
+        if(arrayFavorite.includes(parametr.currentTarget.id)){
+
+        }
+        else{
+          arrayFavorite.push(db[i].id);
+        }
+    }
+  };
+  for (let i = 0; i < db.length; i++) {
+    for (let j = 0; j < arrayFavorite.length; j++) {
+      if(db[i].id === arrayFavorite[j]){
+        $(".favourite__popup_wrap").append(`
+        <div class="popup__card" id="id${db[i].id}">
+            <div class="favourite__card_close_fill">
+                <div class="popup__card_close"></div>
+            </div>
+            <div class="popup__card_left">
+                <img src="./img/${db[i].img}.png" class="popup__card_photo">
+                <div class="popup__card_info">
+                    <div class="popup__card_text">${db[i].name}</div>
+                    <div class="popup__card_id">#${db[i].id}</div>
+                </div>
+            </div>
+            <div class="popup__card_right">
+              <div class="popup__card_addAmount">
+                  <div class="popup__card_amount">${db[i].amount}</div>
+              </div>
+            </div>
+        </div>
+        `);
+        $("#id" + db[i].id + " .favourite__card_close_fill").click(()=>{
+          $("#id" + db[i].id).remove(0);
+          for(let a =0; a < arrayFavorite.length; a++){
+            arrayFavorite.splice(arrayFavorite.indexOf(db[i].id), 1)
+            break;
+          }
+        });
+      }
+    }
+  }
+}
 
 
 
@@ -444,43 +512,44 @@ let showTrees = new ShowTrees();
 showTrees.showAll();
 $("#filtrAll").click(()=>{
   $(".filtr__popup").fadeOut(500);
-
+  $('body').css("overflow", "auto");
   showTrees.showAll();
 });
 
 $("#filtrGreen").click(()=>{
   $(".filtr__popup").fadeOut(500);
-
+  $('body').css("overflow", "auto");
   showTrees.showGreen();
 });
 
 $("#filtrWhite").click(()=>{
   $(".filtr__popup").fadeOut(500);
-
+  $('body').css("overflow", "auto");
   showTrees.showWhite();
 });
 
 $("#filtrWithJewerly").click(()=>{
   $(".filtr__popup").fadeOut(500);
+  $('body').css("overflow", "auto");
 
   showTrees.showWithJewerly();
 });
 
 $("#filtrWithOutJewerly").click(()=>{
   $(".filtr__popup").fadeOut(500);
-
+  $('body').css("overflow", "auto");
   showTrees.showWithOutJewerly();
 });
 
 $("#filtrPlus").click(()=>{
   $(".filtr__popup").fadeOut(500);
-
+  $('body').css("overflow", "auto");
   showTrees.showByPricePlus();
 });
 
 $("#filtrMinus").click(()=>{
   $(".filtr__popup").fadeOut(500);
-
+  $('body').css("overflow", "auto");
   showTrees.showByPriceMinus();
 });
 $("#all").click(()=>{
