@@ -334,15 +334,25 @@ $("#filtr__close").click(()=>{
 
 $(".header__favourite_hover").click(()=>{
   $(".favourite__popup").fadeIn(500);
-  $(".header__favourite_hover").addClass('')
+  $(".header__favourite_hover").addClass('header__favourite_active');
+  $('body').css("overflow", "hidden");
 })
 
 $("#favourite__close").click(()=>{
   $(".favourite__popup").fadeOut(500);
+  $(".header__favourite_hover").removeClass('header__favourite_active');
+  $('body').css("overflow", "auto");
+  menuBtn.classList.remove('open');
+  menuOpen = false;
+  $("#blur").fadeOut(500);
 })
 
 
-
+$(".burger__popup_favourite").click(()=>{
+  $('body').css("overflow", "hidden");
+  $(".favourite__popup").fadeIn(500);
+  $("#burger__popup").fadeOut(500);
+});
 
 
 
