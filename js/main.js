@@ -280,6 +280,7 @@ $("#basket").click(()=>{
   $(".header__search_hover").removeClass('header__search_active');
   $(".favourite__popup").fadeOut(500);
   $(".header__favourite_hover").removeClass('header__favourite_active');
+  $(".message__popup").fadeOut(500);
 });
 $("#close").click(()=>{
   $("#popup").fadeOut(500);
@@ -302,6 +303,7 @@ $("#search").click(()=>{
   menuBtn.classList.remove('open');
   menuOpen = false;
   $(".burger__popup").fadeOut(500);
+  $(".message__popup").fadeOut(500);
 });
 
 
@@ -363,7 +365,25 @@ $(".burger__popup_favourite").click(()=>{
   $("#burger__popup").fadeOut(500);
 });
 
+$(".header__bell_hover").click(()=>{
+  $("#message__close").addClass('header__message_active');
+  $('body').css("overflow", "hidden");
+  $("#blur").fadeIn(500);
+  $(".message__popup").fadeIn(500);
+  $("#popup").fadeOut(500);
+  $("#basket").removeClass("header__basket_active");
+  $("#search__popup").fadeOut(500);
+  $(".header__search_hover").removeClass('header__search_active');
+  $(".header__favourite_hover").removeClass('header__favourite_active');
+});
 
+
+$("#message__close").click(()=>{
+  $(".message__popup").fadeOut(500);
+  $('body').css("overflow", "auto");
+  $("#blur").fadeOut(500);
+  $(".favourite__popup").fadeOut(500);
+});
 
 let input = '';
 $(".popup__search_input").keydown(()=>{
@@ -469,12 +489,19 @@ function ShowBasketCards(parametr){
           }
           allSummary -= db[i].newprice;
           $(".popup__footer_price").text(`${allSummary}грн`);
+          setTimeout(() => {
+            if(arrayBasket.length === 0){
+              $(".popup__footer_price").css('display', 'none');
+              $(".popup__footer_submit").css('display', 'none');
+              $(".popup__footer_input").css('display', "none");
+            }
+          }, 100);
         });
        }
         $(".popup__footer_price").css('display', 'flex');
         $(".popup__footer_submit").css('display', 'flex');
+        $("#input").css('display', "flex");
         $(".popup__footer_price").text(`${allSummary}грн`);
-        
     } 
   }
 }
@@ -528,9 +555,36 @@ function showFavouritesCards(parametr){
 }
 
 
+// /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@gmail.co/
 
+// /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+// function SendMail(){
+//   var params = { 
+//     email: $("#input").val(),
+//     message: `До сплати: ${allSummary}грн`
+//   }
+//   emailjs.send("service_yw1xiz5", "template_oo5smtm", params).then(function (res) {
+//     alert("Success!" + res.status)
+//   });
+//   if($("#input").val().match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/gi) && $("#input").val().slice($("#input").val().indexOf('@'), $("#input").val().length).length === 10){
 
-
+//   }
+// }
+// SendMail();
+function checkValidate(){
+  if($("#input").val().match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/gi) && $("#input").val().slice($("#input").val().indexOf('@'), $("#input").val().length).length === 10){
+    var params = { 
+      email: $("#input").val(),
+      message: `До сплати: ${allSummary}грн`
+    }
+    emailjs.send("service_yw1xiz5", "template_oo5smtm", params).then(function (res) {
+      alert("Success!" + res.status);
+    });
+  }
+}
+$(".popup__footer_submit").click(()=>{
+  checkValidate()
+})
 //  TREES 
 let showTrees = new ShowTrees();
 showTrees.showAll();
@@ -664,20 +718,5 @@ $("#priceMinus").click(()=>{
 
 
 
-$(".popup__footer_submit").click(()=>{
-  
- 
-  function SendMail(){
-    var params = { 
-      email: 'yuranamachinskiy@gmail.com',
-      message: `До сплати: ${allSummary}грн`
-    }
-    emailjs.send("service_yw1xiz5", "template_oo5smtm", params).then(function (res) {
-      alert("Success!" + res.status)
-    });
-  }
-  SendMail();
-
-});
 
 
