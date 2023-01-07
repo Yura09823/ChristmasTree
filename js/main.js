@@ -496,7 +496,7 @@ function showFavouritesCards(parametr){
             </div>
             <div class="popup__card_right">
               <div class="popup__card_addAmount">
-                  <div class="popup__card_amount">${db[i].amount}</div>
+                <div class="popup__card_price">${ db[i].newprice}грн</div>
               </div>
             </div>
         </div>

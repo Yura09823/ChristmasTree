@@ -1,4 +1,8 @@
 @import url('./font/christmaseve.ttf');
+@font-face{
+    font-family: 'ChristmasEve';
+    src:url('./font/christmaseve.ttf');
+}
 *{
     margin: 0;
     padding: 0;
@@ -1111,7 +1115,7 @@ footer{
     border-radius: 20px;
     position: absolute;
     top: 137px;
-    right: 6.5%;
+    right: 7.5%;
     z-index: 100;
     font-family:'Montserrat', sans-serif;
     padding: 20px;
