@@ -393,11 +393,10 @@ $(".popup__search_input").keydown(()=>{
 });
 
 
-
+let allSummary;
 
 function ShowBasketCards(parametr){
   $("#popupwrap").empty();
-  let allSummary = 0;
   for(let i =0; i<db.length; i++){
     if(parametr.currentTarget.id == db[i].id){
         if(arrayBasket.includes(parametr.currentTarget.id)){
@@ -408,10 +407,12 @@ function ShowBasketCards(parametr){
         }
     }
   }
+  allSummary = 0;
   for (let i = 0; i < db.length; i++) {
     for (let j = 0; j < arrayBasket.length; j++) {
       if (db[i].id == arrayBasket[j]) {
-        allSummary += db[i].newprice
+        
+        allSummary += db[i].newprice;
         $("#popupwrap").append(`
         <div class="popup__card" id="code${db[i].id}">
             <div class="popup__card_close_fill">
@@ -442,10 +443,13 @@ function ShowBasketCards(parametr){
         });
         $("#code" + db[i].id + " .popup__card_minus").click(()=>{
           if(db[i].amount > 1){
-            $("#code" + db[i].id + " .popup__card_amount").text(`${db[i].amount -= 1}`)
+            $("#code" + db[i].id + " .popup__card_amount").text(`${db[i].amount -= 1}`);
             $("#code" + db[i].id + " .popup__card_price").text(`${db[i].newprice -= db[i].price }грн`);
             allSummary-= db[i].price;
             $(".popup__footer_price").text(`${allSummary}грн`);
+          }
+          else{
+            console.log('error')
           }
         }); 
         $("#code" + db[i].id + " .popup__card_close_fill").click(()=>{
@@ -455,15 +459,17 @@ function ShowBasketCards(parametr){
             break;
           }
           allSummary -= db[i].newprice;
-          $(".popup__footer_price").text(`${allSummary}грн`)
+          
+
+          $(".popup__footer_price").text(`${allSummary}грн`);
         });
        }
         $(".popup__footer_price").css('display', 'flex');
         $(".popup__footer_submit").css('display', 'flex');
-        $(".popup__footer_price").text(`${allSummary}грн`)
-    }
+        $(".popup__footer_price").text(`${allSummary}грн`);
+        
+    } 
   }
-  
 }
 
 let arrayFavorite = [];
@@ -644,3 +650,26 @@ $("#priceMinus").click(()=>{
   $("#withoutJewerly").removeClass('main__actived');
   $("#pricePlus").removeClass('main__actived');
 });
+
+
+
+
+
+
+$(".popup__footer_submit").click(()=>{
+  
+ 
+  function SendMail(){
+    var params = { 
+      email: 'yuranamachinskiy@gmail.com',
+      message: `До сплати: ${allSummary}грн`
+    }
+    emailjs.send("service_yw1xiz5", "template_oo5smtm", params).then(function (res) {
+      alert("Success!" + res.status)
+    });
+  }
+  SendMail();
+
+});
+
+
