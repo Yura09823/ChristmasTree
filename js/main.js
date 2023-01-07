@@ -277,7 +277,9 @@ $("#basket").click(()=>{
   $('body').attr("scroll", "no");
   $('body').css("overflow", "hidden");
   $("#search__popup").fadeOut(500);
-  $(".header__search_hover").removeClass('header__search_active')
+  $(".header__search_hover").removeClass('header__search_active');
+  $(".favourite__popup").fadeOut(500);
+  $(".header__favourite_hover").removeClass('header__favourite_active');
 });
 $("#close").click(()=>{
   $("#popup").fadeOut(500);
@@ -295,6 +297,8 @@ $("#search").click(()=>{
   $("#blur").fadeIn(500);
   $(".header__search_hover").addClass('header__search_active')
   $("#basket").removeClass("header__basket_active");
+  $(".favourite__popup").fadeOut(500);
+  $(".header__favourite_hover").removeClass('header__favourite_active');
   menuBtn.classList.remove('open');
   menuOpen = false;
   $(".burger__popup").fadeOut(500);
@@ -336,6 +340,11 @@ $(".header__favourite_hover").click(()=>{
   $(".favourite__popup").fadeIn(500);
   $(".header__favourite_hover").addClass('header__favourite_active');
   $('body').css("overflow", "hidden");
+  $("#blur").fadeIn(500);
+  $("#popup").fadeOut(500);
+  $("#basket").removeClass("header__basket_active");
+  $("#search__popup").fadeOut(500);
+  $(".header__search_hover").removeClass('header__search_active');
 })
 
 $("#favourite__close").click(()=>{
@@ -459,8 +468,6 @@ function ShowBasketCards(parametr){
             break;
           }
           allSummary -= db[i].newprice;
-          
-
           $(".popup__footer_price").text(`${allSummary}грн`);
         });
        }
@@ -513,6 +520,7 @@ function showFavouritesCards(parametr){
             arrayFavorite.splice(arrayFavorite.indexOf(db[i].id), 1)
             break;
           }
+          
         });
       }
     }
