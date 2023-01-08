@@ -153,12 +153,28 @@ a{
     background-image: url('./img/bell.png');
     background-size: cover;
 }
-.header__bell_hover:hover{
+.header__bell_hover{
+    position: relative;
+}
+.header__bell_active{
     background-color: #D51544;
 }
-.header__bell_hover:hover .header__bell{
-    transition: 0.5s;
+.header__bell_active .header__bell{
     background-image: url('./img/bellWhite.png');
+    background-size: cover;
+}
+.header__dot{
+    border-radius: 50%;
+    background-color: #D51544;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 2px 8px 2px 8px;
 }
 .header__favourite{
     width: 22px;
@@ -1169,13 +1185,32 @@ footer{
 }
 .message__popup_wrap{
     width: 100%;
-    height: 100%;
+    height: 94%;
     padding: 25px 0 0 0;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-end;
+    justify-content: space-between;
 }
 .message__wrap_h1{
     font-size: 22px;
+    width: 100%;
 }
-
+.message__wrap_button{
+    width: 150px;
+    height: 45px;
+    background-color: #D51544;
+    border-radius: 15px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    text-align: center;
+}
+.message__wrap_button:hover{
+    cursor: pointer;
+}
 
 
 
@@ -1332,6 +1367,12 @@ footer{
 }
 
 @media screen and (max-width:768px){
+    .message__popup{
+        width: 100%;
+        right: 0%;
+        border-bottom-right-radius: 0px;
+        border-bottom-left-radius: 0px;
+    }
     .favourite__popup{
         width: 100%;
         right: 0;

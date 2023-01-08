@@ -25,7 +25,14 @@ menuBtn.addEventListener('click', () => {
         $("#burger__popup").fadeIn(500);
         $('body').css("overflow", "hidden");
         $("#search__popup").fadeOut(500);
-        $(".header__search_hover").removeClass('header__search_active')
+        $("#popup").fadeOut(500)
+        $(".header__basket_hover").removeClass('header__basket_active');
+        $(".header__search_hover").removeClass('header__search_active');
+        $(".favourite__popup").fadeOut(500);
+        $(".message__popup").fadeOut(500);
+        $(".header__favourite_hover").removeClass('header__favourite_active');
+        $(".header__bell_hover").removeClass('header__bell_active');
+        
     } else {
         menuBtn.classList.remove('open');
         menuOpen = false;
@@ -281,6 +288,8 @@ $("#basket").click(()=>{
   $(".favourite__popup").fadeOut(500);
   $(".header__favourite_hover").removeClass('header__favourite_active');
   $(".message__popup").fadeOut(500);
+  $(".header__bell_hover").removeClass('header__bell_active');
+  $("#burger__popup").fadeOut(500);
 });
 $("#close").click(()=>{
   $("#popup").fadeOut(500);
@@ -304,6 +313,7 @@ $("#search").click(()=>{
   menuOpen = false;
   $(".burger__popup").fadeOut(500);
   $(".message__popup").fadeOut(500);
+  $(".header__bell_hover").removeClass('header__bell_active');
 });
 
 
@@ -326,6 +336,8 @@ $(".burger__popup_a").click(()=>{
 $(".burger__popup_basket").click(()=>{
   $("#burger__popup").fadeOut(500);
   $("#popup").fadeIn(500);
+  $(".favourite__popup").fadeOut(500);
+  $(".message__popup").fadeOut(500);
 });
 
 $(".main__filtr_fill").click(()=>{
@@ -347,6 +359,11 @@ $(".header__favourite_hover").click(()=>{
   $("#basket").removeClass("header__basket_active");
   $("#search__popup").fadeOut(500);
   $(".header__search_hover").removeClass('header__search_active');
+  $(".header__bell_hover").removeClass('header__bell_active');
+  menuBtn.classList.remove('open');
+  menuOpen = false;
+  $("#burger__popup").fadeOut(500);
+  $(".message__popup").fadeOut(500);
 })
 
 $("#favourite__close").click(()=>{
@@ -375,6 +392,10 @@ $(".header__bell_hover").click(()=>{
   $("#search__popup").fadeOut(500);
   $(".header__search_hover").removeClass('header__search_active');
   $(".header__favourite_hover").removeClass('header__favourite_active');
+  $(".header__bell_hover").addClass('header__bell_active');
+  menuBtn.classList.remove('open');
+  menuOpen = false;
+  $("#burger__popup").fadeOut(500);
 });
 
 
@@ -383,6 +404,7 @@ $("#message__close").click(()=>{
   $('body').css("overflow", "auto");
   $("#blur").fadeOut(500);
   $(".favourite__popup").fadeOut(500);
+  $(".header__bell_hover").removeClass('header__bell_active');
 });
 
 let input = '';
@@ -502,6 +524,7 @@ function ShowBasketCards(parametr){
         $(".popup__footer_submit").css('display', 'flex');
         $("#input").css('display', "flex");
         $(".popup__footer_price").text(`${allSummary}грн`);
+        $(".popup__footer").fadeIn(0);
     } 
   }
 }
@@ -553,37 +576,41 @@ function showFavouritesCards(parametr){
     }
   }
 }
-
-
-// /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@gmail.co/
-
-// /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-// function SendMail(){
-//   var params = { 
-//     email: $("#input").val(),
-//     message: `До сплати: ${allSummary}грн`
-//   }
-//   emailjs.send("service_yw1xiz5", "template_oo5smtm", params).then(function (res) {
-//     alert("Success!" + res.status)
-//   });
-//   if($("#input").val().match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/gi) && $("#input").val().slice($("#input").val().indexOf('@'), $("#input").val().length).length === 10){
-
-//   }
-// }
-// SendMail();
+$(".message__wrap_button").fadeOut(0);
 function checkValidate(){
   if($("#input").val().match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/gi) && $("#input").val().slice($("#input").val().indexOf('@'), $("#input").val().length).length === 10){
-    var params = { 
-      email: $("#input").val(),
-      message: `До сплати: ${allSummary}грн`
-    }
-    emailjs.send("service_yw1xiz5", "template_oo5smtm", params).then(function (res) {
-      alert("Success!" + res.status);
-    });
+    // var params = { 
+    //   email: $("#input").val(),
+    //   message: `До сплати: ${allSummary}грн`
+    // }
+    // emailjs.send("service_yw1xiz5", "template_oo5smtm", params).then(function (res) {
+    //   alert("Success!" + res.status);
+    //   $(".message__popup_wrap").empty();
+    //   $(".message__popup_wrap").append(`
+    //     <h1 class="message__wrap_h1">Чек було відправлено на пошту успішно!</h1>
+    //   `);
+    //   $(".header__dot").show(500);
+    // });
+    $(".header__dot").fadeIn(500);
+    $(".message__wrap_h1").remove(0)
+    $(".message__popup_wrap").append(`
+         <h1 class="message__wrap_h1">Чек було відправлено на пошту успішно!</h1>
+    `);
+    $(".message__wrap_button").fadeIn(500);
   }
 }
 $(".popup__footer_submit").click(()=>{
-  checkValidate()
+  checkValidate();
+  $("#popupwrap").empty();
+  $("#input").val(''); 
+  allSummary = 0;
+  $(".popup__footer_price").text(allSummary+'грн');
+  $(".popup__footer").fadeOut(0);
+})
+$(".message__wrap_button").click(()=>{
+  $(".message__wrap_button").fadeOut(0);
+  $(".header__dot").fadeOut(0);
+  $(".message__wrap_h1").remove();
 })
 //  TREES 
 let showTrees = new ShowTrees();
