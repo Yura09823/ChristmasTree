@@ -586,24 +586,21 @@ function showFavouritesCards(parametr){
 $(".message__wrap_button").fadeOut(0);
 function checkValidate(){
   if($("#input").val().match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/gi) && $("#input").val().slice($("#input").val().indexOf('@'), $("#input").val().length).length === 10){
-    // var params = { 
-    //   email: $("#input").val(),
-    //   message: `До сплати: ${allSummary}грн`
-    // }
-    // emailjs.send("service_yw1xiz5", "template_oo5smtm", params).then(function (res) {
-    //   alert("Success!" + res.status);
-    //   $(".message__popup_wrap").empty();
-    //   $(".message__popup_wrap").append(`
-    //     <h1 class="message__wrap_h1">Чек було відправлено на пошту успішно!</h1>
-    //   `);
-    //   $(".header__dot").show(500);
-    // });
-    $(".header__dot").fadeIn(500);
+    var params = { 
+      email: $("#input").val(),
+      message: `До сплати: ${allSummary}грн`
+    }
+    emailjs.send("service_yw1xiz5", "template_oo5smtm", params).then(function (res) {
+      
+      $(".header__dot").fadeIn(500);
     $(".message__wrap_h1").remove(0)
     $(".message__popup_wrap").append(`
          <h1 class="message__wrap_h1">Чек було відправлено на пошту успішно!</h1>
     `);
     $(".message__wrap_button").fadeIn(500);
+      
+    });
+    
   }
 }
 $(".popup__footer_submit").click(()=>{
