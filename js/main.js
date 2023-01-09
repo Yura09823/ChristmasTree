@@ -330,7 +330,7 @@ $(".burger__popup_a").click(()=>{
   $("#burger__popup").fadeOut(500);
   $('body').css("overflow", "auto");
   menuBtn.classList.remove('open');
-  menuOpen = true;
+  menuOpen = false;
 });
 
 $(".burger__popup_basket").click(()=>{
@@ -339,7 +339,14 @@ $(".burger__popup_basket").click(()=>{
   $(".favourite__popup").fadeOut(500);
   $(".message__popup").fadeOut(500);
 });
+$(".burger__popup_messange").click(()=>{
+  $("#burger__popup").fadeOut(500);
+  $(".favourite__popup").fadeOut(500);
+  menuBtn.classList.remove('open');
+  menuOpen = false;
 
+  $(".message__popup").fadeIn(500);
+});
 $(".main__filtr_fill").click(()=>{
   $(".filtr__popup").fadeIn(500);
   $('body').css("overflow", "hidden");
