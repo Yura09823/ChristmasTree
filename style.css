@@ -1591,7 +1591,21 @@ footer{
     }
 }
 
-
+@media screen and (max-width:525px){
+    .search__card_img{
+        width: 80px;
+        height: 124px;
+    }
+    .search__card_name{
+        font-size: 32px;
+    }
+    .search__card_oldprice{
+        font-size: 20px;
+    }
+    .search__card_newprice{
+        font-size: 28px;
+    }
+}
 
 @media screen and (max-width:480px){
     
@@ -1709,7 +1723,20 @@ footer{
 
 
 
-
+@media screen and (max-width:435px){
+    .search__card_newprice{
+        font-size:24px;
+    }
+    .search__card_oldprice{
+        font-size: 18px;
+    }
+    .search__card_name{
+        font-size: 28px;
+    }
+    .search__card_id{
+        font-size: 20px;
+    }
+}
 
 
 
@@ -1745,7 +1772,8 @@ footer{
     }
 }
 
-@media screen and (max-width:390px){
+
+@media screen and (max-width:400px){
     .header__logo_text{
         line-height: 32px;
         font-size: 28px;
@@ -1754,7 +1782,22 @@ footer{
         width: 65px;
         height: 62px;
     }
+    .search__card_img{
+        width: 60px;
+        height: 94px;
+    }
+    .search__card_name{
+        font-size: 24px;
+    }
+    .search__card_id{
+        font-size: 16px;
+    }
+    .search__card_logo{
+        width: 50px;
+        height: 47px;
+    }
 }
+
 
 
 @media screen and (max-width:380px){
@@ -1787,7 +1830,7 @@ footer{
     }
 }
 
-@media screen and (max-width:360px){
+@media screen and (max-width:365px){
     .header__logo_text{
         line-height: 28px;
         font-size: 24px;
@@ -1795,6 +1838,15 @@ footer{
     .header_santa{
         width: 56px;
         height: 54px;
+    }
+    .search__card_newprice{
+        font-size: 20px;
+    }
+    .search__card_oldprice{
+        font-size: 16px;
+    }
+    .search__card_name{
+        font-size: 20px;
     }
 }
 
