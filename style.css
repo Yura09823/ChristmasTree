@@ -1704,6 +1704,12 @@ footer{
         width: 70px;
         height: 66px;
     }
+    .popup{
+        position:aboslute;
+        top: 0px;
+        height: 100vh;
+        border-radius: 0px;
+    }
 }
 
 @media screen and (max-width:390px){
