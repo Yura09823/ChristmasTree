@@ -1710,6 +1710,20 @@ footer{
         height: 100vh;
         border-radius: 0px;
     }
+    .popup__top{
+        margin-bottom: 15px;
+    }
+    .popup__card_right{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .popup__card_add{
+        width: 35px;
+        height: 35px;
+    }
+    .popup__footer{
+        justify-content: space-evenly;
+    }
 }
 
 @media screen and (max-width:390px){
