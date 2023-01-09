@@ -1589,6 +1589,14 @@ footer{
         height: 320px;
         border-radius: 20px;
     }
+    .swiper{
+        height: 380px;
+        max-width: 98%;
+        z-index: 30;
+    }
+    .swiper-slide{
+        height: 320px;
+    }
 }
 
 @media screen and (max-width:525px){
@@ -1651,14 +1659,7 @@ footer{
         height: 320px;
         background-size: cover;
     }
-    .swiper{
-        height: 380px;
-        max-width: 98%;
-        z-index: 30;
-    }
-    .swiper-slide{
-        height: 320px;
-    }
+    
     .main__banner_text{
         display: none;
     }
