@@ -117,7 +117,7 @@ class ShowTrees{
     $(".main__catalog_wrap").empty();
     for(let el of db){
       $(".main__catalog_wrap").append(`
-      <div class="main__catalog_item">
+      <div class="main__catalog_item" id="item${el.id}">
           <div class="main__photo">
               <img class="main__photo_fill" src="./img/${el.img}.png">
           </div>
@@ -131,12 +131,15 @@ class ShowTrees{
               <div class="main__item_favourite" id="${el.id}">До обраного</div>
               <div class="main__item_submit" id="${el.id}">Придбати</div>
           </div>
-        </div>
+          <div class="main__catalog_background">
+              <div class="main__background_center">Товар додано до корзини</div
+          </div>
       </div>
       `)
     };
     $(".main__item_submit").click((parametr)=>{
       ShowBasketCards(parametr);
+      
     })
     $(".main__item_favourite").click((parametr)=>{
       showFavouritesCards(parametr);
@@ -147,21 +150,23 @@ class ShowTrees{
     for(let i =0; i<db.length; i++){
       if(db[i].color == 'green'){
         $(".main__catalog_wrap").append(`
-          <div class="main__catalog_item">
+            <div class="main__catalog_item" id="item${db[i].id}">
             <div class="main__photo">
                 <img class="main__photo_fill" src="./img/${db[i].img}.png">
             </div>
-            <div class="main__item_title">${db[i].name} ${db[i].id}</div>
+            <div class="main__item_title">${db[i].id} #${db[i].id}</div>
             <div class="main__item_subtitle">Вага:<div class="main__item_color"> 1.8кг</div></div>
             <div class="main__item_subtitle">Ширина: <span class="main__item_color">60см</span></div>
             <div class="main__item_subtitle">Висота: <span class="main__item_color">2м</span></div>
             <div class="main__item_subtitle">${db[i].oldprice}грн</div>
             <div class="main__item_subtitle">${db[i].price}грн</div>
             <div class="main__buttons">
-                <div class="main__item_favourite">До обраного</div>
+                <div class="main__item_favourite" id="${db[i].id}">До обраного</div>
                 <div class="main__item_submit" id="${db[i].id}">Придбати</div>
             </div>
-          </div>
+            <div class="main__catalog_background">
+                <div class="main__background_center">Товар додано до корзини</div
+            </div>
         </div>
         `);
       }
@@ -175,22 +180,24 @@ class ShowTrees{
     for(let i =0; i<db.length; i++){
       if(db[i].color == 'white'){
         $(".main__catalog_wrap").append(`
-          <div class="main__catalog_item">
-            <div class="main__photo">
-                <img class="main__photo_fill" src="./img/${db[i].img}.png">
-            </div>
-            <div class="main__item_title">${db[i].name} ${db[i].id}</div>
-            <div class="main__item_subtitle">Вага:<div class="main__item_color"> 1.8кг</div></div>
-            <div class="main__item_subtitle">Ширина: <span class="main__item_color">60см</span></div>
-            <div class="main__item_subtitle">Висота: <span class="main__item_color">2м</span></div>
-            <div class="main__item_subtitle">${db[i].oldprice}грн</div>
-            <div class="main__item_subtitle">${db[i].price}грн</div>
-            <div class="main__buttons">
-                <div class="main__item_favourite">До обраного</div>
-                <div class="main__item_submit" id="${db[i].id}">Придбати</div>
-            </div>
-          </div>
+        <div class="main__catalog_item" id="item${db[i].id}">
+        <div class="main__photo">
+            <img class="main__photo_fill" src="./img/${db[i].img}.png">
         </div>
+        <div class="main__item_title">${db[i].id} #${db[i].id}</div>
+        <div class="main__item_subtitle">Вага:<div class="main__item_color"> 1.8кг</div></div>
+        <div class="main__item_subtitle">Ширина: <span class="main__item_color">60см</span></div>
+        <div class="main__item_subtitle">Висота: <span class="main__item_color">2м</span></div>
+        <div class="main__item_subtitle">${db[i].oldprice}грн</div>
+        <div class="main__item_subtitle">${db[i].price}грн</div>
+        <div class="main__buttons">
+            <div class="main__item_favourite" id="${db[i].id}">До обраного</div>
+            <div class="main__item_submit" id="${db[i].id}">Придбати</div>
+        </div>
+        <div class="main__catalog_background">
+            <div class="main__background_center">Товар додано до корзини</div
+        </div>
+    </div>
         `);
       }
     }
@@ -203,22 +210,24 @@ class ShowTrees{
     for(let i =0; i<db.length; i++){
       if(db[i].jewerly == true){
         $(".main__catalog_wrap").append(`
-          <div class="main__catalog_item">
-            <div class="main__photo">
-                <img class="main__photo_fill" src="./img/${db[i].img}.png">
-            </div>
-            <div class="main__item_title">${db[i].name} ${db[i].id}</div>
-            <div class="main__item_subtitle">Вага:<div class="main__item_color"> 1.8кг</div></div>
-            <div class="main__item_subtitle">Ширина: <span class="main__item_color">60см</span></div>
-            <div class="main__item_subtitle">Висота: <span class="main__item_color">2м</span></div>
-            <div class="main__item_subtitle">${db[i].oldprice}грн</div>
-            <div class="main__item_subtitle">${db[i].price}рн</div>
-            <div class="main__buttons">
-                <div class="main__item_favourite">До обраного</div>
-                <div class="main__item_submit" id="${db[i].id}">Придбати</div>
-            </div>
-          </div>
+        <div class="main__catalog_item" id="item${db[i].id}">
+        <div class="main__photo">
+            <img class="main__photo_fill" src="./img/${db[i].img}.png">
         </div>
+        <div class="main__item_title">${db[i].id} #${db[i].id}</div>
+        <div class="main__item_subtitle">Вага:<div class="main__item_color"> 1.8кг</div></div>
+        <div class="main__item_subtitle">Ширина: <span class="main__item_color">60см</span></div>
+        <div class="main__item_subtitle">Висота: <span class="main__item_color">2м</span></div>
+        <div class="main__item_subtitle">${db[i].oldprice}грн</div>
+        <div class="main__item_subtitle">${db[i].price}грн</div>
+        <div class="main__buttons">
+            <div class="main__item_favourite" id="${db[i].id}">До обраного</div>
+            <div class="main__item_submit" id="${db[i].id}">Придбати</div>
+        </div>
+        <div class="main__catalog_background">
+            <div class="main__background_center">Товар додано до корзини</div
+        </div>
+    </div>
         `);
       }
     }
@@ -231,22 +240,24 @@ class ShowTrees{
     for(let i =0; i<db.length; i++){
       if(db[i].jewerly == false){
         $(".main__catalog_wrap").append(`
-          <div class="main__catalog_item">
-            <div class="main__photo">
-                <img class="main__photo_fill" src="./img/${db[i].img}.png">
-            </div>
-            <div class="main__item_title">${db[i].name} ${db[i].id}</div>
-            <div class="main__item_subtitle">Вага:<div class="main__item_color"> 1.8кг</div></div>
-            <div class="main__item_subtitle">Ширина: <span class="main__item_color">60см</span></div>
-            <div class="main__item_subtitle">Висота: <span class="main__item_color">2м</span></div>
-            <div class="main__item_subtitle">${db[i].oldprice}грн</div>
-            <div class="main__item_subtitle">${db[i].price}грн</div>
-            <div class="main__buttons">
-                <div class="main__item_favourite">До обраного</div>
-                <div class="main__item_submit" id="${db[i].id}">Придбати</div>
-            </div>
-          </div>
+        <div class="main__catalog_item" id="item${db[i].id}">
+        <div class="main__photo">
+            <img class="main__photo_fill" src="./img/${db[i].img}.png">
         </div>
+        <div class="main__item_title">${db[i].id} #${db[i].id}</div>
+        <div class="main__item_subtitle">Вага:<div class="main__item_color"> 1.8кг</div></div>
+        <div class="main__item_subtitle">Ширина: <span class="main__item_color">60см</span></div>
+        <div class="main__item_subtitle">Висота: <span class="main__item_color">2м</span></div>
+        <div class="main__item_subtitle">${db[i].oldprice}грн</div>
+        <div class="main__item_subtitle">${db[i].price}грн</div>
+        <div class="main__buttons">
+            <div class="main__item_favourite" id="${db[i].id}">До обраного</div>
+            <div class="main__item_submit" id="${db[i].id}">Придбати</div>
+        </div>
+        <div class="main__catalog_background">
+            <div class="main__background_center">Товар додано до корзини</div
+        </div>
+    </div>
         `);
       }
       $(".main__item_submit").click(()=>{
@@ -429,10 +440,6 @@ $(".popup__search_input").keydown(()=>{
                     <div class="search__card_name">${el.name}</div>
                     <div class="search__card_id">#${el.id}</div>
                 </div>
-                <div class="search__card_buttons">
-                    <div class="search__card_button">До обраного</div>
-                    <div class="search__card_button">Придбати</div>
-                </div>
             </div>
         </div>
         <div class="search__card_right">
@@ -469,7 +476,6 @@ function ShowBasketCards(parametr){
   for (let i = 0; i < db.length; i++) {
     for (let j = 0; j < arrayBasket.length; j++) {
       if (db[i].id == arrayBasket[j]) {
-        
         allSummary += db[i].newprice;
         $("#popupwrap").append(`
         <div class="popup__card" id="code${db[i].id}">
@@ -526,7 +532,13 @@ function ShowBasketCards(parametr){
             }
           }, 100);
         });
+        $("#item"+db[i].id + " .main__background_center").text('Товар додано до корзини').text()
+        $("#item"+db[i].id + " .main__catalog_background").fadeIn(500);
+        setTimeout(() => {
+          $("#item"+db[i].id + " .main__catalog_background").fadeOut(500);
+        }, 3000);
        }
+       
         $(".popup__footer_price").css('display', 'flex');
         $(".popup__footer_submit").css('display', 'flex');
         $("#input").css('display', "flex");
@@ -535,7 +547,6 @@ function ShowBasketCards(parametr){
     } 
   }
 }
-
 let arrayFavorite = [];
 function showFavouritesCards(parametr){
   $(".favourite__popup_wrap").empty();
@@ -577,9 +588,15 @@ function showFavouritesCards(parametr){
             arrayFavorite.splice(arrayFavorite.indexOf(db[i].id), 1)
             break;
           }
-          
         });
+        
+         $("#item"+db[i].id + " .main__catalog_background").fadeIn(500);
+         $("#item"+db[i].id + " .main__background_center").text('Товар додано до обраного').text()
+        setTimeout(() => {
+          $("#item"+db[i].id + " .main__catalog_background").fadeOut(500);
+        }, 3000);
       }
+      
     }
   }
 }
@@ -593,11 +610,11 @@ function checkValidate(){
     emailjs.send("service_yw1xiz5", "template_oo5smtm", params).then(function (res) {
       
       $(".header__dot").fadeIn(500);
-    $(".message__wrap_h1").remove(0)
-    $(".message__popup_wrap").append(`
-         <h1 class="message__wrap_h1">Чек було відправлено на пошту успішно!</h1>
-    `);
-    $(".message__wrap_button").fadeIn(500);
+      $(".message__wrap_h1").remove(0)
+      $(".message__popup_wrap").append(`
+          <h1 class="message__wrap_h1">Чек було відправлено на пошту успішно!</h1>
+      `);
+      $(".message__wrap_button").fadeIn(500);
       
     });
     
