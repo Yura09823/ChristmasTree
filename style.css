@@ -1,7 +1,9 @@
 @import url('./font/christmaseve.ttf');
 @font-face{
     font-family: 'ChristmasEve';
-    src:url('./font/christmaseve.ttf') format('ttf');
+    src:url('./font/christmaseve.ttf') format('truetype');
+    src: url('./font/christmaseve.eot') format('embedded-opentype');
+    src: url('./font/christmaseve.woff') format('woff');
 }
 *{
     margin: 0;
