@@ -173,6 +173,9 @@ class ShowTrees{
     }
     $(".main__item_submit").click((parametr)=>{
       ShowBasketCards(parametr);
+    });
+    $(".main__item_favourite").click((parametr)=>{
+      showFavouritesCards(parametr);
     })
   }
   showWhite(){
@@ -203,6 +206,9 @@ class ShowTrees{
     }
     $(".main__item_submit").click((parametr)=>{
       ShowBasketCards(parametr);
+    });
+    $(".main__item_favourite").click((parametr)=>{
+      showFavouritesCards(parametr);
     })
   }
   showWithJewerly(){
@@ -233,6 +239,9 @@ class ShowTrees{
     }
     $(".main__item_submit").click((parametr)=>{
       ShowBasketCards(parametr);
+    });
+    $(".main__item_favourite").click((parametr)=>{
+      showFavouritesCards(parametr);
     })
   }
   showWithOutJewerly(){
@@ -244,7 +253,7 @@ class ShowTrees{
         <div class="main__photo">
             <img class="main__photo_fill" src="./img/${db[i].img}.png">
         </div>
-        <div class="main__item_title">${db[i].id} #${db[i].id}</div>
+        <div class="main__item_title">${db[i].name} #${db[i].id}</div>
         <div class="main__item_subtitle">Вага:<div class="main__item_color"> 1.8кг</div></div>
         <div class="main__item_subtitle">Ширина: <span class="main__item_color">60см</span></div>
         <div class="main__item_subtitle">Висота: <span class="main__item_color">2м</span></div>
@@ -260,8 +269,11 @@ class ShowTrees{
     </div>
         `);
       }
-      $(".main__item_submit").click(()=>{
+      $(".main__item_submit").click((parametr)=>{
         ShowBasketCards(parametr);
+      });
+      $(".main__item_favourite").click((parametr)=>{
+        showFavouritesCards(parametr);
       })
       
     }
@@ -274,6 +286,9 @@ class ShowTrees{
     this.showAll();
     $(".main__item_submit").click((parametr)=>{
       ShowBasketCards(parametr);
+    });
+    $(".main__item_favourite").click((parametr)=>{
+      showFavouritesCards(parametr);
     })
   }
   showByPriceMinus(){
@@ -284,6 +299,9 @@ class ShowTrees{
     this.showAll();
     $(".main__item_submit").click((parametr)=>{
       ShowBasketCards(parametr);
+    });
+    $(".main__item_favourite").click((parametr)=>{
+      showFavouritesCards(parametr);
     })
   }
 };
