@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Santa Tree's | Sambir</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <title>Santa's Catalog | Sambir</title>
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="./img/santa.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
+    <link rel="shortcut icon" href="../img/santa.png" type="image/x-icon">
 </head>
 <body>
     <header>
         <div class="header__container">
             <a href="/" class="logo">
-                <img src="./img/santa.png" alt="Santa's Trees - магазин декоративних ялинок" class="logo-img">
+                <img src="../img/santa.png" alt="Santa's Trees - магазин декоративних ялинок" class="logo-img">
                 <span class="logo-text">Santa's <br>  Trees!</span>
             </a>
             <div class="header__location">
@@ -27,8 +27,8 @@
                 </select>
             </div>
             <nav class="header__nav">
-                <a href="/" class="header__link">Головна</a>
-                <a href="./html/catalog.html" class="header__link">Каталог</a>
+                <a href="/index.html" class="header__link">Головна</a>
+                <a href="/html/catalog.html" class="header__link">Каталог</a>
                 <a href="#" class="header__link">Про нас</a>
                 <div class="dot"></div>
             </nav>
@@ -78,7 +78,7 @@
                     <div class="swiper-pagination"></div>
                 </div>
             </section>
-            <!-- <section class="main__catalog" id="catalog">
+            <section class="main__catalog" id="catalog">
                 <h2 class="main__title">Santa's Catalog!</h2>
                 <aside class="catalog__filters">
                     <div class="filters__group">
@@ -101,32 +101,45 @@
                         </select>
                     </div>
                 </aside>
+                <!-- cards -->
                 <div class="catalog__content" id="catalog__content"></div>
-                
+                <!-- <article class="catalog__item">
+                    <div class="item-image__wrapper">
+                        <img class="item__image" src="./img/10.avif" alt="Ялинка штучна зелена" loading="lazy">
+                    </div>
+                    <h3 class="item__title">Ялинка штучна <span class="item-id">#001</span></h3>
+                    <ul class="item__specs">
+                        <li>Вага: <span class="item-weight"></span></li>
+                        <li>Висота: <span class="item-height"></span></li>
+                    </ul>
+                    <div class="item__price-block">
+                        <span class="price-old"></span>
+                        <span class="price-new"></span>
+                    </div>
+                    <div class="item__actions">
+                        <button class="item__fav">До обраного</button>
+                        <button class="item__buy">Придбати</button>
+                    </div>
+                </article> -->
 
 
-            </section> -->
-
-            <section class="main__diagram" id="diagram">
-                <h2 class="main__title">Santa's Diagram!</h2>
-                <div class="chart-wrapper">
-                    <canvas id="priceChart"></canvas>
-                </div>
             </section>
         </div>
     </main>
+
+
     <footer>
         <div class="footer__container">
             <div class="footer__logo">
                 <a href="/" class="logo">
-                    <img src="./img/santa.png" alt="Santa's Trees - магазин декоративних ялинок" class="logo-img">
+                    <img src="../img/santa.png" alt="Santa's Trees - магазин декоративних ялинок" class="logo-img">
                     <span class="logo-text">Santa's <br>  Trees!</span>
                 </a>
                 <p class="footer__rights">&copy; Santa's Trees! All rights reserved.</p>
             </div>
             <nav class="footer__nav">
-                <a href="/index.html" class="footer__link">Головна</a>
-                <a href="./html/catalog.html" class="footer__link">Каталог</a>
+                <a href="../index.html" class="footer__link">Головна</a>
+                <a href="./catalog.html" class="footer__link">Каталог</a>
                 <a href="#" class="footer__link">Про нас</a>
             </nav>
             <nav class="footer__orders">
@@ -167,7 +180,7 @@
         <div class="modal__footer">
             <input type="email" id="modal__input" class="modal__input" placeholder="Введіть електронну адресу">
             <div class="modal__footer-container">
-                <p class="modal__check">0 грн</p>
+                <p class="modal__check"></p>
                 <button type="submit" class="modal__submit">Замовити</button>
             </div>
         </div>
@@ -190,10 +203,8 @@
         <div class="modal__container modal__container-search"></div>
     </div>
 
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
-    <script type="module" src="./js/main.js"></script>
-    <script src="./js/modules/modal_functions.js"></script>
+    <script type="module" src="../js/modules/catalog.js"></script>
+    <script type="module" src="../js/modules/modal_functions.js"></script>
 </body>
 </html>

@@ -36,13 +36,16 @@ a{
 ul{
     list-style-type: none;
 }
-.modal__basket{
-    width: 500px;
+
+/* MODAL START */
+
+.modal__basket, .modal__favourites, .modal__search{
+    width: 85%;
     height: 600px;
     border-radius: 12px;
     background-color: var(--color-light);
     position: fixed;
-    top: calc(12vh + 40px);
+    top: calc(12vh + 30px);
     right: 7.5%;
     z-index: -1;
     visibility: hidden;
@@ -59,11 +62,11 @@ ul{
 }
 .modal__h2{
     font-size: 24px;
-    margin-bottom: 20px;
 }
 .modal__header{
     display: flex;
     justify-content: space-between;
+    margin-bottom: 10px;
 }
 .modal__close, .modal__close-item{
     width: 40px;
@@ -78,11 +81,12 @@ ul{
 }
 .modal__container{
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 20px;
+    justify-content: space-around;
 }
 .modal__card{
-    width: 100%;
+    width: 45%;
     height: 70px;
     border-radius: 12px;
     background-color: var(--color-background);
@@ -91,6 +95,7 @@ ul{
     justify-content: space-between;
     padding: 0 20px 0 30px;
     position: relative;
+    user-select: none;
 }
 .modal__first{
     display: flex;
@@ -138,6 +143,46 @@ ul{
     background-color: var(--color-light);
     border-radius: 10px;
 }
+.modal__footer{
+    width: 100%;
+    position: absolute;
+    bottom: 20px;
+    padding-right: 40px;
+}
+.modal__input{
+    width: 100%;
+    height: 45px;
+    outline: none;
+    font-size: 20px;
+    border-radius: 12px;
+    padding-left: 10px;
+    margin-bottom: 40px;
+}
+.modal__footer-container{
+    display: flex;
+    justify-content: space-between;
+}
+.modal__check{
+    font-size: 21px;
+    font-weight: 600;
+}
+.modal__submit{
+    font-size: 18px;
+    width: 150px;
+    height: 35px;
+    border-radius: 10px;
+    border: none;
+    background-color: var(--color-primary);
+    color: var(--color-light);
+}
+.modal__submit:hover{
+    cursor: pointer;
+}
+
+
+
+/* MODAL END */
+
 .dot{
     width: 10px;
     height: 10px;
@@ -176,7 +221,7 @@ ul{
     background-color: #fff;
     border-radius: 12px;
     padding: 0 10px;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 .header__select{
     appearance: none;
@@ -226,7 +271,7 @@ ul{
     opacity: 1;
 }
 .header__nav a:nth-child(3):hover ~ .dot {
-    transform: translateX(280px);
+    transform: translateX(273px);
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
     opacity: 1;

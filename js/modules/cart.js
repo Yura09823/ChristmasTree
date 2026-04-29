@@ -17,7 +17,7 @@ export class Cart{
             content += `
                 <article class="catalog__item">
                     <div class="item-image__wrapper">
-                        <img class="item__image" src="./img/${tree.img}.avif" alt="${tree.name}" loading="lazy">
+                        <img class="item__image" src="../img/${tree.img}.avif" alt="${tree.name}" loading="lazy">
                     </div>
                     <h3 class="item__title">${tree.name} <span class="item-id">#${tree.id}</span></h3>
                     <ul class="item__specs">
@@ -56,22 +56,18 @@ export class Cart{
     }
     createCartBuy() {
         const container = document.querySelector('.modal__container');
-        if (!container) return; // 
+        if (!container) return; 
 
         let content = ``;
         
-        // 1. Отримуємо масив ID з нашого об'єкта favorites/cart
-        // Наприклад: ["001", "005"]
         const idsInCart = Object.keys(this.state.cart);
 
-        // 2. Фільтруємо основну базу даних, щоб отримати тільки ті ялинки, які ми купили
         const products = this.db.filter(item => idsInCart.includes(String(item.id)));
-
         products.forEach(item => {
             content += `
-                <div class="modal__card">
+                <div class="modal__card" data-id="${item.id}">
                     <div class="modal__first">
-                        <img src="./img/${item.img}.avif" alt="${item.name}" class="modal__img">
+                        <img src="../img/${item.img}.avif" alt="${item.name}" class="modal__img">
                         <div class="modal__title">
                             <p class="modal__name">${item.name}</p>
                             <p class="modal__id">#${item.id}</p>
@@ -79,11 +75,67 @@ export class Cart{
                     </div>
                     <div class="modal__calc">
                         <div class="modal__price">${item.newPrice} грн</div>
-                        <button type="button" class="modal__button minus" data-id="${item.id}">-</button>
-                        <p class="modal__result">1</p>
-                        <button type="button" class="modal__button plus" data-id="${item.id}">+</button>
                     </div>
-                    <div class="modal__close-item" data-id="${item.id}"></div>
+                    <div class="modal__close-item"></div>
+                </div>
+            `;
+        });
+        
+        container.innerHTML = content;
+    }
+    createCartFav() {
+        const container = document.querySelector('.modal__container-fav');
+        if (!container) return; 
+
+        let content = ``;
+        
+        const idsInCart = Object.keys(this.state.favorites);
+        
+
+        const products = this.db.filter(item => idsInCart.includes(String(item.id)));
+        products.forEach(item => {
+            content += `
+                <div class="modal__card" data-id="${item.id}">
+                    <div class="modal__first">
+                        <img src="../img/${item.img}.avif" alt="${item.name}" class="modal__img">
+                        <div class="modal__title">
+                            <p class="modal__name">${item.name}</p>
+                            <p class="modal__id">#${item.id}</p>
+                        </div>
+                    </div>
+                    <div class="modal__calc">
+                        <div class="modal__price">${item.newPrice} грн</div>
+                    </div>
+                    <div class="modal__close-item"></div>
+                </div>
+            `;
+        });
+
+        container.innerHTML = content;
+    }
+    createCartSearch(filtered) {
+        const container = document.querySelector('.modal__container-search');
+        if (!container) return; 
+
+        let content = ``;
+        
+        
+        const products = filtered
+
+        products.forEach(item => {
+            content += `
+                <div class="modal__card" data-id="${item.id}">
+                    <div class="modal__first">
+                        <img src="../img/${item.img}.avif" alt="${item.name}" class="modal__img">
+                        <div class="modal__title">
+                            <p class="modal__name">${item.name}</p>
+                            <p class="modal__id">#${item.id}</p>
+                        </div>
+                    </div>
+                    <div class="modal__calc">
+                        <div class="modal__price">${item.newPrice} грн</div>
+                    </div>
+                    <div class="modal__close-item"></div>
                 </div>
             `;
         });
