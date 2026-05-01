@@ -61,8 +61,7 @@ const searchId = ()=>{
     })
 
     myCard.createCartSearch(filtered)
-
-
+    
 }
 
 search_input.addEventListener('keyup', searchId)

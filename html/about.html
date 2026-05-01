@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Santa Tree's | Sambir</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <title>Santa's About | Sambir</title>
+        <link rel="stylesheet" href="../css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="./img/santa.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
+    <link rel="shortcut icon" href="../img/santa.png" type="image/x-icon">
+    <link rel="stylesheet" href="../css/about.css">
 </head>
 <body>
     <header>
         <div class="header__container">
             <a href="/" class="logo">
-                <img src="./img/santa.png" alt="Santa's Trees - магазин декоративних ялинок" class="logo-img">
+                <img src="../img/santa.png" alt="Santa's Trees - магазин декоративних ялинок" class="logo-img">
                 <span class="logo-text">Santa's <br>  Trees!</span>
             </a>
             <div class="header__location">
@@ -27,9 +28,9 @@
                 </select>
             </div>
             <nav class="header__nav">
-                <a href="/" class="header__link">Головна</a>
-                <a href="./html/catalog.html" class="header__link">Каталог</a>
-                <a href="./html/catalog.html" class="header__link">Про нас</a>
+                <a href="/index.html" class="header__link">Головна</a>
+                <a href="/html/catalog.html" class="header__link">Каталог</a>
+                <a href="/html/about.html" class="header__link">Про нас</a>
                 <div class="dot"></div>
             </nav>
             <div class="header__buttonBlock">
@@ -78,10 +79,27 @@
                     <div class="swiper-pagination"></div>
                 </div>
             </section>
-            <section class="main__diagram" id="diagram">
-                <h2 class="main__title">Santa's Diagram!</h2>
-                <div class="chart-wrapper">
-                    <canvas id="priceChart"></canvas>
+
+            <section class="main__about">
+                <h2 class="about__title">Про магазин Santa's Trees!</h2>
+                <div class="about__content">
+                    <p class="about__description">
+                        Вітаємо в <strong>Santa's Trees!</strong> - вашому надійному помічнику у створенні справжнього новорічного дива. Ми спеціалізуємося на продажі високоякісних штучних ялинок, які не лише виглядають як живі, але й допомагають зберігати природу.
+                    </p>
+                    <p class="about__description">
+                        Наша місія - принести свято в кожен дім. Неважливо, чи шукаєте ви класичну зелену красуню, чи стильну засніжену ялинку з вбудованим декором, у нашому каталозі знайдеться ідеальний варіант для будь-якого інтер'єру.
+                    </p>
+                    <h3 class="about__subtitle">Чому варто обрати саме наші ялинки?</h3>
+                    <ul class="about__list">
+                        <li><strong>Преміальна якість:</strong> Матеріали не обсипаються, не мають стороннього запаху та є абсолютно безпечними для дітей і домашніх тварин.</li>
+                        <li><strong>Довговічність:</strong> Наша ялинка прослужить вам багато років, зберігаючи свій ідеальний вигляд кожної зими.</li>
+                        <li><strong>Екологічність:</strong> Обираючи штучне дерево, ви рятуєте живі ліси від щорічної вирубки.</li>
+                        <li><strong>Комфорт:</strong> Працюємо цілодобово та без вихідних. Організовуємо швидку доставку по містах та районах.</li>
+                    </ul>
+                    <div class="about__actions">
+                        <p class="about__call">Готові обрати свою ідеальну ялинку?</p>
+                        <a href="../html/catalog.html" class="about__btn">Перейти до каталогу</a>
+                    </div>
                 </div>
             </section>
         </div>
@@ -90,15 +108,15 @@
         <div class="footer__container">
             <div class="footer__logo">
                 <a href="/" class="logo">
-                    <img src="./img/santa.png" alt="Santa's Trees - магазин декоративних ялинок" class="logo-img">
+                    <img src="../img/santa.png" alt="Santa's Trees - магазин декоративних ялинок" class="logo-img">
                     <span class="logo-text">Santa's <br>  Trees!</span>
                 </a>
                 <p class="footer__rights">&copy; Santa's Trees! All rights reserved.</p>
             </div>
             <nav class="footer__nav">
-                <a href="/index.html" class="footer__link">Головна</a>
-                <a href="./html/catalog.html" class="footer__link">Каталог</a>
-                <a href="./html/about.html" class="footer__link">Про нас</a>
+                <a href="../index.html" class="footer__link">Головна</a>
+                <a href="./catalog.html" class="footer__link">Каталог</a>
+                <a href="./about.html" class="footer__link">Про нас</a>
             </nav>
             <nav class="footer__orders">
                 <a href="tel:+380674366127">+38 0674366127</a>
@@ -112,6 +130,7 @@
             </div>
         </div>
     </footer>
+
     <div class="modal__basket" id="modal__basket">
         <div class="modal__header">
             <h2 class="modal__h2">Корзина</h2>
@@ -121,7 +140,7 @@
         <div class="modal__footer">
             <input type="email" id="modal__input" class="modal__input" placeholder="Введіть електронну адресу">
             <div class="modal__footer-container">
-                <p class="modal__check">0 грн</p>
+                <p class="modal__check"></p>
                 <button type="submit" class="modal__submit">Замовити</button>
             </div>
         </div>
@@ -144,10 +163,8 @@
         <div class="modal__container modal__container-search"></div>
     </div>
 
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
-    <script type="module" src="./js/main.js"></script>
-    <script src="./js/modules/modal_functions.js"></script>
+    <script type="module" src="../js/modules/modal_functions.js"></script>
+    <script src="../js/modules/about.js"></script>
 </body>
 </html>

@@ -1,0 +1,22 @@
+.about__title{
+    font-size: 36px;
+}
+
+.about__description:last-of-type{
+    margin-bottom: 10px;
+}
+.about__subtitle{
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.about__list li{
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+.about__actions{
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+.about__btn:hover{
+    color: #D51544;
+}
